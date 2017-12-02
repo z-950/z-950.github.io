@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="CORS简单也简单，但就是一直没去学习，顺手记录 CORS参考资料：  https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS http://newhtml.net/using-cors/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-02T10:16:47.927Z">
+<meta property="og:updated_time" content="2017-12-02T10:44:54.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CORS跨域请求">
 <meta name="twitter:description" content="CORS简单也简单，但就是一直没去学习，顺手记录 CORS参考资料：  https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS http://newhtml.net/using-cors/">
@@ -172,6 +172,7 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="CORS的概括"><a href="#CORS的概括" class="headerlink" title="CORS的概括"></a>CORS的概括</h2><p><code>CORS</code>是一个跨域的规范。<code>CORS</code> 需要客户端和服务器同时支持。客户端主要负责设置符合的请求报头（使用<code>XMLHttpRequest</code>或<code>fetch</code>）。详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">MDN</a>。</p>
+<p>注：非https资源在https站点下会被默认拦截</p>
 <h2 id="对于img的crossOrgin属性"><a href="#对于img的crossOrgin属性" class="headerlink" title="对于img的crossOrgin属性"></a>对于img的crossOrgin属性</h2><p>出现在用<code>canvas</code>绘制图形的情况中。（以下说法引用自<a href="https://segmentfault.com/q/1010000000768672#answers-title" target="_blank" rel="noopener">这里</a>，有部分修改）</p>
 <blockquote>
 <p><code>canvas</code>使用的<code>image</code>可以跨域，但是说<code>canvas</code>使用了没有权限的跨域图片在使用<code>canvas.toDataURL()</code>等数据导出函数的时候会报错。（见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/CORS_enabled_image#什么是“被污染”的_canvas" target="_blank" rel="noopener">MDN</a>）</p>
@@ -180,7 +181,11 @@
 <blockquote>
 <p><a href="https://www.web-tinker.com/article/20687.html" target="_blank" rel="noopener">另一篇简单易懂的文章</a></p>
 </blockquote>
-<h2 id="注：还有浏览器禁止跨域未完全了解，待更新"><a href="#注：还有浏览器禁止跨域未完全了解，待更新" class="headerlink" title="注：还有浏览器禁止跨域未完全了解，待更新"></a>注：还有浏览器禁止跨域未完全了解，待更新</h2>
+<h2 id="浏览器对跨域判定"><a href="#浏览器对跨域判定" class="headerlink" title="浏览器对跨域判定"></a>浏览器对跨域判定</h2><blockquote>
+<p><a href="http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/" target="_blank" rel="noopener">http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/</a><br>或 <a href="https://segmentfault.com/a/1190000003710973" target="_blank" rel="noopener">https://segmentfault.com/a/1190000003710973</a></p>
+</blockquote>
+<p>补充：文章中未提到跨域请求具体分两次发送，浏览器判断跨域是在两次请求之间进行。且第一次预请求只发送头部，服务器也只返回头部，故未获取到数据。（）</p>
+
       
 
       
@@ -415,15 +420,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">audio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tws</a>
               </li>
             
             <div class="clearfix"></div>
