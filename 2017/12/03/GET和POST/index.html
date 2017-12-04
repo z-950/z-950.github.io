@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-04T09:48:13.346Z">
+<meta property="og:updated_time" content="2017-12-04T10:13:40.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GET和POST">
 <meta name="twitter:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
@@ -207,7 +207,7 @@
 <h2 id="后台接收（Node-js）"><a href="#后台接收（Node-js）" class="headerlink" title="后台接收（Node.js）"></a>后台接收（Node.js）</h2><p>（已引入模块：<code>express</code>）</p>
 <h3 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h3><p>只需使用<code>req.query</code>即可获得解析后生成的对象<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.query)</span><br><span class="line">    res.redirect(<span class="number">303</span>,<span class="string">'/'</span>)  <span class="regexp">//</span> 转跳</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h3 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h3><h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>需要使用<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">body-parser</a>中间件解析<code>POST</code>方式传输的<code>application/x-www-form-urlencoded</code>和<code>application/json</code>格式数据。参数详解看<a href="http://www.jianshu.com/p/ea0122ad1ac0" target="_blank" rel="noopener">这里</a>（可能与新版本有出入，以<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">github</a>上为准）</p>
-<p>在路由之前添加中间件<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="keyword">use</span>(bodyParser.json()); <span class="regexp">//</span> <span class="keyword">for</span> parsing application/json</span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.urlencoded(&#123; <span class="symbol">extended:</span> <span class="keyword">true</span> &#125;)); <span class="regexp">//</span> <span class="keyword">for</span> parsing application/x-www-form-urlencoded</span><br></pre></td></tr></table></figure></p>
+<p>在路由之前添加中间件<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ for parsing application/json</span></span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.json()); </span><br><span class="line">/<span class="regexp">/ for parsing application/x</span>-www-form-urlencoded</span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.urlencoded(&#123; <span class="symbol">extended:</span> <span class="keyword">true</span> &#125;));</span><br></pre></td></tr></table></figure></p>
 <p>然后即可用<code>req.body</code>获取解析后生成的对象，两种数据类型生成的对象无差别。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.body)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>注：<code>body-parser</code>不支持<code>multipart/form-data</code>，此类型在下方提到</p>
 <h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>若不使用<code>express</code>则可以用<code>res.on(&#39;data&#39;,chunk =&gt;{...})</code>，但此方法需要考虑很多因素，需要额外的代码来使其更为健壮，在此不予讨论。有需要可以参考<a href="http://blog.csdn.net/yang_ge_98/article/details/52921858" target="_blank" rel="noopener">这篇文章</a>或<a href="https://itbilu.com/nodejs/core/VkK5RCoXW.html" target="_blank" rel="noopener">这篇文章</a></p>
@@ -434,19 +434,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,10 +467,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">audio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,7 +521,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">tws老年玩家&lt;br&gt;初识web前后端&lt;br&gt;联系我：1033766950@qq.com</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;p&gt;tws老年玩家&lt;/p&gt;&lt;p&gt;初识web前后端&lt;/p&gt;&lt;p&gt;react,stylus,nodejs&lt;/p&gt;&lt;br&gt;&lt;p&gt;本站文章使用「&lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/deed.zh&#34;&gt;署名 4.0 国际（CC BY 4.0）&lt;/a&gt;」创作共享协议。即在引用时署名后，可进行节选、混编、二次创作，且允许商业性使用&lt;/p&gt;&lt;br&gt;&lt;p&gt;联系我：1033766950@qq.com&lt;/p&gt;</div>
   	  	
     	</section>
     
