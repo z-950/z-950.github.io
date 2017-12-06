@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-04T10:13:40.445Z">
+<meta property="og:updated_time" content="2017-12-05T12:39:52.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GET和POST">
 <meta name="twitter:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
@@ -207,11 +207,11 @@
 <h2 id="后台接收（Node-js）"><a href="#后台接收（Node-js）" class="headerlink" title="后台接收（Node.js）"></a>后台接收（Node.js）</h2><p>（已引入模块：<code>express</code>）</p>
 <h3 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h3><p>只需使用<code>req.query</code>即可获得解析后生成的对象<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.query)</span><br><span class="line">    res.redirect(<span class="number">303</span>,<span class="string">'/'</span>)  <span class="regexp">//</span> 转跳</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h3 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h3><h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>需要使用<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">body-parser</a>中间件解析<code>POST</code>方式传输的<code>application/x-www-form-urlencoded</code>和<code>application/json</code>格式数据。参数详解看<a href="http://www.jianshu.com/p/ea0122ad1ac0" target="_blank" rel="noopener">这里</a>（可能与新版本有出入，以<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">github</a>上为准）</p>
-<p>在路由之前添加中间件<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ for parsing application/json</span></span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.json()); </span><br><span class="line">/<span class="regexp">/ for parsing application/x</span>-www-form-urlencoded</span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.urlencoded(&#123; <span class="symbol">extended:</span> <span class="keyword">true</span> &#125;));</span><br></pre></td></tr></table></figure></p>
+<p>在路由之前添加中间件<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for parsing application/json</span></span><br><span class="line"><span class="keyword">app</span>.<span class="keyword">use</span>(bodyParser.json())</span><br><span class="line"><span class="comment">// for parsing application/x-www-form-urlencoded</span></span><br><span class="line"><span class="keyword">app</span>.<span class="keyword">use</span>(bodyParser.urlencoded(&#123; extended: true &#125;))</span><br></pre></td></tr></table></figure></p>
 <p>然后即可用<code>req.body</code>获取解析后生成的对象，两种数据类型生成的对象无差别。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.body)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>注：<code>body-parser</code>不支持<code>multipart/form-data</code>，此类型在下方提到</p>
 <h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>若不使用<code>express</code>则可以用<code>res.on(&#39;data&#39;,chunk =&gt;{...})</code>，但此方法需要考虑很多因素，需要额外的代码来使其更为健壮，在此不予讨论。有需要可以参考<a href="http://blog.csdn.net/yang_ge_98/article/details/52921858" target="_blank" rel="noopener">这篇文章</a>或<a href="https://itbilu.com/nodejs/core/VkK5RCoXW.html" target="_blank" rel="noopener">这篇文章</a></p>
-<p>我选择引入<a href="https://www.npmjs.com/package/formidable" target="_blank" rel="noopener">Formidable</a>模块<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/submit'</span>, <span class="function"><span class="params">(req, res)</span>=&gt;</span>&#123;</span><br><span class="line">    const form = <span class="keyword">new</span> formidable.IncomingForm();</span><br><span class="line">    form.multiples = <span class="literal">true</span></span><br><span class="line">    form.parse(req, <span class="function"><span class="params">(err, fields, files)</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) <span class="keyword">return</span> res.redirect(<span class="number">303</span>, <span class="string">'/error'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'获取到的数据:'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(fields);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'获取到的文件:'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(files);</span><br><span class="line">    &#125;);</span><br><span class="line">    res.redirect(<span class="number">303</span>, <span class="string">'/'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>我选择引入<a href="https://www.npmjs.com/package/formidable" target="_blank" rel="noopener">Formidable</a>模块<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/submit'</span>, <span class="function"><span class="params">(req, res)</span>=&gt;</span>&#123;</span><br><span class="line">    const form = <span class="keyword">new</span> formidable.IncomingForm()</span><br><span class="line">    form.multiples = <span class="literal">true</span></span><br><span class="line">    form.parse(req, <span class="function"><span class="params">(err, fields, files)</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) <span class="keyword">return</span> res.redirect(<span class="number">303</span>, <span class="string">'/error'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'获取到的数据:'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(fields)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'获取到的文件:'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(files)</span><br><span class="line">    &#125;);</span><br><span class="line">    res.redirect(<span class="number">303</span>, <span class="string">'/'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>其中<code>form.multiples = true</code>可以在<code>input</code>设置了<code>multiple</code>后上传多个文件时生成数组。默认为<code>false</code>，此时只能获取一个文件的信息。</p>
 <p><code>multipart/form-data</code>中数据也可以此模块获取（也可以使用其他包，比如<a href="https://github.com/pillarjs/multiparty" target="_blank" rel="noopener">multiparty</a>）</p>
 <p>注：更多设置请查找<a href="https://www.npmjs.com/package/formidable" target="_blank" rel="noopener">Formidable</a></p>
@@ -305,6 +305,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/12/05/iframe探究/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iframe探究
+        
+      </div>
+    </a>
   
   
     <a href="/2017/12/02/CORS跨域请求/" id="article-nav-older" class="article-nav-link-wrap">
@@ -434,23 +443,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,6 +463,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
@@ -470,7 +479,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
               </li>
             
             <div class="clearfix"></div>
