@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-05T12:39:52.360Z">
+<meta property="og:updated_time" content="2017-12-08T07:48:13.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GET和POST">
 <meta name="twitter:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
@@ -171,8 +171,12 @@
 </ol>
 </blockquote>
 <a id="more"></a>
-<h2 id="一点HTTP知识"><a href="#一点HTTP知识" class="headerlink" title="一点HTTP知识"></a>一点HTTP知识</h2><h3 id="GET（1）"><a href="#GET（1）" class="headerlink" title="GET（1）"></a>GET<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">（1）</a></h3><ul>
-<li><code>GET</code>方式传输数据时，数据附在<code>URL</code>之后，即把数据放在<code>HTTP</code>报文的报头。以<code>?</code>分割<code>URL</code>和传输数据，参数之间以<code>&amp;</code>相连。如果数据是英文字母/数字，原样发送，如果是空格，转换为<code>+</code>，如果是中文/其他字符，则直接把字符串用<code>BASE64</code>加密，得出如：<code>%E4%BD%A0%E5%A5%BD</code>，其中<code>%XX</code>中的<code>XX</code>为该符号以16进制表示的<code>ASCII</code>。</li>
+<h2 id="一点HTTP知识"><a href="#一点HTTP知识" class="headerlink" title="一点HTTP知识"></a>一点HTTP知识</h2><p>更新<code>2017-12-8</code>：经<code>/\/\</code>提醒，<code>GET</code>数据编码部分有误，已改正</p>
+<h3 id="GET（1）"><a href="#GET（1）" class="headerlink" title="GET（1）"></a>GET<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">（1）</a></h3><ul>
+<li><code>GET</code>方式传输数据时，数据附在<code>URL</code>之后，即把数据放在<code>HTTP</code>报文的报头。以<code>?</code>分割<code>URL</code>和传输数据，参数之间以<code>&amp;</code>相连。此后只讨论传输数据（即<code>queryString</code>）的编码情况。空格会被转换成<code>+</code>或<code>%20</code>。如果数据是 <strong>ASCII码范围</strong> 的 <strong>非URL保留字</strong> 或 <strong>安全字符</strong>，保留数据。否则直接把字符串转换为<code>percent-encoded bytes</code>，得出如：<code>%E4%BD%A0%E5%A5%BD</code>，其中<code>%XX</code>中的<code>XX</code>为该符号 <strong>以16进制表示的字符编码</strong>，但所用<strong>字符集</strong>在不同情况下可能不同。（此处无了解<code>URL</code>的编码方式的需求，故不做整理（懒），放出相关链接，有兴趣可以查看。或许以后会做整理。另请注意：<strong>queryString</strong> 的编码情况与 <strong>URL整体</strong> （或 <strong>path路径</strong>）编码情况有所区别，比如对保留字符的处理）<blockquote>
+<p>【<a href="http://www.imkevinyang.com/2009/08/%E8%AF%A6%E8%A7%A3javascript%E4%B8%AD%E7%9A%84url%E7%BC%96%E8%A7%A3%E7%A0%81.html" target="_blank" rel="noopener">详解Javascript中的Url编码/解码</a>】【<a href="http://www.cnblogs.com/z-one/p/6542955.html" target="_blank" rel="noopener">js对url进行编码和解码（三种方式区别）</a>】【<a href="https://segmentfault.com/a/1190000010024438#articleHeader2" target="_blank" rel="noopener">JS中URL编码的问题</a>】【<a href="https://en.wikipedia.org/wiki/Query_string#Web_forms" target="_blank" rel="noopener">Query string-wiki</a>】【<a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener">Percent-encoding</a>】</p>
+</blockquote>
+</li>
 <li><code>GET</code>方式传输数据时并无数据大小限制。<code>URL</code>不存在参数上限的问题，<code>HTTP</code>协议规范没有对<code>URL</code>长度进行限制。只有特定浏览器和服务器存在限制。</li>
 <li><code>GET</code>传输数组时可按如下格式：<code>a=1&amp;a=2&amp;a=3</code>，后台自动解析后会成为数组。只支持一维，多维数组需要自定义解析。</li>
 </ul>
@@ -443,10 +447,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -459,7 +459,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,6 +476,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
