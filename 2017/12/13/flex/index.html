@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>flex | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于flex相关内容的整理">
+  <meta name="description" content="关于flex相关内容的整理 关于flex主要属性的简单介绍：  https://juejin.im/entry/58aabdf92f301e006c35b9fd https://juejin.im/entry/58ad046a128fe1006a5795c4">
 <meta name="keywords" content="note,css,前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flex">
 <meta property="og:url" content="http://yoursite.com/2017/12/13/flex/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="关于flex相关内容的整理">
+<meta property="og:description" content="关于flex相关内容的整理 关于flex主要属性的简单介绍：  https://juejin.im/entry/58aabdf92f301e006c35b9fd https://juejin.im/entry/58ad046a128fe1006a5795c4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-13T08:09:43.261Z">
+<meta property="og:updated_time" content="2017-12-13T08:34:00.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flex">
-<meta name="twitter:description" content="关于flex相关内容的整理">
+<meta name="twitter:description" content="关于flex相关内容的整理 关于flex主要属性的简单介绍：  https://juejin.im/entry/58aabdf92f301e006c35b9fd https://juejin.im/entry/58ad046a128fe1006a5795c4">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -163,14 +163,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="关于flex相关内容的整理"><a href="#关于flex相关内容的整理" class="headerlink" title="关于flex相关内容的整理"></a>关于flex相关内容的整理</h4><a id="more"></a>
-<blockquote>
+        <h4 id="关于flex相关内容的整理"><a href="#关于flex相关内容的整理" class="headerlink" title="关于flex相关内容的整理"></a>关于flex相关内容的整理</h4><blockquote>
 <p>关于flex主要属性的简单介绍：</p>
 <ol>
 <li><a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd" target="_blank" rel="noopener">https://juejin.im/entry/58aabdf92f301e006c35b9fd</a></li>
 <li><a href="https://juejin.im/entry/58ad046a128fe1006a5795c4" target="_blank" rel="noopener">https://juejin.im/entry/58ad046a128fe1006a5795c4</a></li>
 </ol>
 </blockquote>
+<a id="more"></a>
 <h2 id="弹性容器-flex-container-属性"><a href="#弹性容器-flex-container-属性" class="headerlink" title="弹性容器(flex container)属性"></a>弹性容器(flex container)属性</h2><h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><p>使用flex布局必须设置。</p>
 <p>可选值：<code>flex</code>/<code>inline-flex</code></p>
 <p><code>flex</code>会使容器成为块级元素。<code>inline-flex</code>会使容器成为内联元素。（来自<a href="https://cnodejs.org/topic/59f47c206afe9c1f5d08b85f" target="_blank" rel="noopener">这里</a>）</p>
@@ -188,12 +188,12 @@
 <p>比如：<code>flex-flow: row wrap</code>。也可只设置一个：<code>flex-flow: row</code></p>
 <h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p>设置主轴上元素的对齐方式。默认为<code>flex-start</code>，即从主轴开始方向密集对齐。</p>
 <p>可选值：<code>flex-start</code>/<code>flex-end</code>/<code>center</code>/<code>space-between</code>/<code>space-around</code></p>
-<p>各种对齐方式详细可见<a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd#-3-justify-content" target="_blank" rel="noopener">这里</a>中的动图</p>
+<p>各种对齐方式详细可见<a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd" target="_blank" rel="noopener">这里</a>中的动图</p>
 <h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>设置单个主轴上，在交叉轴方向元素的对齐方式，对所有元素生效，即独立行上所有元素的对齐方式。默认为<code>stretch</code>。</p>
 <p>可选值：<code>flex-start</code>/<code>flex-end</code>/<code>center</code>/<code>stretch</code>/<code>baseline</code></p>
 <p><code>stretch</code>即向交叉轴方向拉伸至充满，但仅为每一行增加长度相同，最终长度不一定相同。且设置了<code>width</code>/<code>height</code>的元素不会被拉伸。</p>
 <p>注：受<code>max-height</code>限制。</p>
-<p>各种对齐方式详见可见<a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd#-4-align-items" target="_blank" rel="noopener">这里</a>中的动图</p>
+<p>各种对齐方式详见可见<a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd" target="_blank" rel="noopener">这里</a>中的动图</p>
 <h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>多个主轴时元素在交叉轴方向的对齐方式，即多行时行的对齐方式，<strong>只有一行时不起作用</strong>。默认为<code>stretch</code>。</p>
 <p>可选值：<code>flex-start</code>/<code>flex-end</code>/<code>center</code>/<code>space-between</code>/<code>space-around</code></p>
 <p><code>stretch</code>为允许行内部元素拉伸，即使<code>align-items: stretch</code>生效。取其他值时<code>align-items: stretch</code>不生效。</p>
@@ -203,17 +203,21 @@
 <h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p>设置元素在主轴方向拉伸比例。默认为<code>0</code>，即若有剩余空间也不拉伸。不可设为负值。</p>
 <p>当数值不为0且有剩余空间时，无论元素是否设置了<code>width</code>/<code>height</code>，都会被拉伸。若数值相同，则拉伸比例相同；若数值不同，拉伸比例为数值比例。</p>
 <p>无论是否设置了<code>width</code>/<code>height</code>，拉伸的表现都是：增加长度的比例与数值比例相同。当没有设置宽度时，元素本身宽度与内容最长宽度相等。</p>
+<p>详细可看<a href="https://juejin.im/entry/58ad046a128fe1006a5795c4" target="_blank" rel="noopener">这里</a></p>
 <h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>设置元素在主轴方向缩小比例。默认为<code>1</code>。不可设为负值。</p>
 <p>当数值为0时，即使空间不足，也不进行压缩，元素超出父元素边界，亦即父元素不会被撑大。此时可用<code>flex-wrap: wrap</code>进行换行。</p>
 <p>注：需要设置元素本身的<code>width</code>/<code>height</code>。否则若因元素内部内容使元素超出父元素边界，<code>flex-shrink</code>不起作用。</p>
 <p>缩小的数值计算较复杂，但大致是以数值的比例对原宽度进行削减。详细可看<a href="http://www.css88.com/book/css/properties/flex/flex-shrink.htm" target="_blank" rel="noopener">这里</a></p>
+<p>详细可看<a href="https://juejin.im/entry/58ad046a128fe1006a5795c4" target="_blank" rel="noopener">这里</a>的动图</p>
 <h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>设置元素在主轴方向上的长度。默认值为<code>auto</code>，即元素原本大小。</p>
 <p><code>flex-basis</code>与主轴方向有关。如当<code>flex-direction</code>为<code>row</code>时，设置的是宽度。当<code>flex-direction</code>为<code>column</code>时，设置的是高度。</p>
 <p>注：会覆盖<code>width</code>/<code>height</code>。可被<code>flex-grow</code>拉伸。</p>
+<p>详细可看<a href="https://juejin.im/entry/58ad046a128fe1006a5795c4" target="_blank" rel="noopener">这里</a>的动图</p>
 <h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>为<code>flex-grow</code>、<code>flex-shrink</code>和<code>flex-basis</code>的简写。默认值为<code>0 1 auto</code></p>
 <p>后两个属性可选。</p>
 <h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>设置元素本身在交叉轴上的对齐方式，可以覆盖<code>align-items</code>属性。默认为<code>auto</code>，即继承父元素<code>align-items</code>的属性。</p>
 <p>可选值：<code>flex-start</code>/<code>flex-end</code>/<code>center</code>/<code>stretch</code>/<code>baseline</code></p>
+<p>各种对齐方式详见可见<a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd" target="_blank" rel="noopener">这里</a>中的动图</p>
 <h2 id="与其他CSS属性结合后拓展"><a href="#与其他CSS属性结合后拓展" class="headerlink" title="与其他CSS属性结合后拓展"></a>与其他CSS属性结合后拓展</h2><p>待补充。</p>
 
       
@@ -434,14 +438,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
@@ -450,7 +446,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,7 +478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,10 +487,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">audio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
