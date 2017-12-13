@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>CORS跨域请求 | 950的个人博客</title>
+  <title>Tag: 前 | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CORS简单也简单，但就是一直没去学习，顺手记录 CORS参考资料：  https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS http://newhtml.net/using-cors/">
-<meta name="keywords" content="note,js,html">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CORS跨域请求">
-<meta property="og:url" content="http://yoursite.com/2017/12/02/CORS跨域请求/index.html">
+  <meta name="description" content="tws老年玩家，初识web前后端">
+<meta property="og:type" content="website">
+<meta property="og:title" content="950的个人博客">
+<meta property="og:url" content="http://yoursite.com/tags/前/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="CORS简单也简单，但就是一直没去学习，顺手记录 CORS参考资料：  https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS http://newhtml.net/using-cors/">
+<meta property="og:description" content="tws老年玩家，初识web前后端">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-05T06:20:13.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CORS跨域请求">
-<meta name="twitter:description" content="CORS简单也简单，但就是一直没去学习，顺手记录 CORS参考资料：  https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS http://newhtml.net/using-cors/">
+<meta name="twitter:title" content="950的个人博客">
+<meta name="twitter:description" content="tws老年玩家，初识web前后端">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -143,57 +141,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CORS跨域请求" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      CORS跨域请求
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/12/13/flex/" class="archive-article-date">
+  	<time datetime="2017-12-13T08:09:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/12/13/flex/">flex</a>
     </h1>
   
 
-        
-        <a href="/2017/12/02/CORS跨域请求/" class="archive-article-date">
-  	<time datetime="2017-12-02T08:07:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="CORS简单也简单，但就是一直没去学习，顺手记录"><a href="#CORS简单也简单，但就是一直没去学习，顺手记录" class="headerlink" title="CORS简单也简单，但就是一直没去学习，顺手记录"></a>CORS简单也简单，但就是一直没去学习，顺手记录</h4><blockquote>
-<p>CORS参考资料：</p>
-<ol>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS</a></li>
-<li><a href="http://newhtml.net/using-cors/" target="_blank" rel="noopener">http://newhtml.net/using-cors/</a></li>
-</ol>
-</blockquote>
-<a id="more"></a>
-<h2 id="CORS的概括"><a href="#CORS的概括" class="headerlink" title="CORS的概括"></a>CORS的概括</h2><p><code>CORS</code>是一个跨域的规范。<code>CORS</code> 要求同时配置好客户端和服务器。客户端主要负责设置符合的请求报头（使用<code>XMLHttpRequest</code>或<code>fetch</code>）。服务器也需要返回合适的报头。详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">MDN</a>。</p>
-<p>注：非https资源在https站点下会被默认拦截</p>
-<h2 id="对于img的crossOrgin属性"><a href="#对于img的crossOrgin属性" class="headerlink" title="对于img的crossOrgin属性"></a>对于img的crossOrgin属性</h2><p>出现在用<code>canvas</code>绘制图形的情况中。（以下说法引用自<a href="https://segmentfault.com/q/1010000000768672#answers-title" target="_blank" rel="noopener">这里</a>，有部分修改）</p>
-<blockquote>
-<p><code>canvas</code>使用的<code>image</code>可以跨域，但是<code>canvas</code>使用了没有权限的跨域图片后，在使用<code>canvas.toDataURL()</code>等数据导出函数的时候会报错。（见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/CORS_enabled_image#什么是“被污染”的_canvas" target="_blank" rel="noopener">MDN</a>）</p>
-</blockquote>
-<p>使用<code>img</code>的<code>crossOrgin</code>属性可能使浏览器行为符合预期（需要服务器允许）</p>
-<blockquote>
-<p><a href="https://www.web-tinker.com/article/20687.html" target="_blank" rel="noopener">另一篇简单易懂的文章</a></p>
-</blockquote>
-<h2 id="浏览器对跨域判定"><a href="#浏览器对跨域判定" class="headerlink" title="浏览器对跨域判定"></a>浏览器对跨域判定</h2><blockquote>
-<p><a href="http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/" target="_blank" rel="noopener">http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/</a><br>或 <a href="https://segmentfault.com/a/1190000003710973" target="_blank" rel="noopener">https://segmentfault.com/a/1190000003710973</a></p>
-</blockquote>
-<p>概括：跨域限制（同源限制）只是浏览器的行为。跨域访问包括：不同协议，不同域名（主域名或子域名），不同端口，域名对应ip。</p>
-<p>补充：文章中未提到跨域请求具体分两次发送，浏览器判断跨域是在两次请求之间进行。且第一次预请求只发送头部，服务器也只返回头部，故未获取到数据。（来自<code>segmentfault</code>中<a href="https://segmentfault.com/a/1190000003710973" target="_blank" rel="noopener">@chiyiw的评论</a>）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,125 +180,29 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">前</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/02/CORS跨域请求/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/12/03/GET和POST/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          GET和POST
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/12/02/插入b站视频测试/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">插入b站视频测试</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -344,9 +225,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
