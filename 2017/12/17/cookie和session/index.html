@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-lessons/tree/master/lesson16 http://www.cnblogs.com/vi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-17T08:51:09.731Z">
+<meta property="og:updated_time" content="2017-12-17T09:20:08.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coockie和session">
 <meta name="twitter:description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-lessons/tree/master/lesson16 http://www.cnblogs.com/vi">
@@ -215,8 +215,8 @@
 <p>更多请阅读<a href="https://github.com/jdesboeufs/connect-mongo#connect-mongo" target="_blank" rel="noopener">文档</a></p>
 <h3 id="session的设置和删除。"><a href="#session的设置和删除。" class="headerlink" title="session的设置和删除。"></a>session的设置和删除。</h3><p>设置。使用中间件<code>app.use(session({...}))</code>后，在路由中使用<code>req.session.cookieName</code>进行读写。可设置为<code>string</code>或<code>object</code>（<code>object</code>会被转化为<code>json</code>?）。若不使用<code>cookieName</code>，则会生成其他<code>session</code>，但没有相应的<code>session cookie</code>发送到浏览器。</p>
 <p>删除。使用<code>req.session.destroy((err)=&gt;{...})</code>即可清除<code>session</code>。若想同时删除浏览器中的<code>session cookie</code>，可以这样。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">req.session.destory(<span class="function"><span class="params">(err)</span>=&gt;</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    res.clearCookie(<span class="string">'connect.sid'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="session验证登陆状态"><a href="#session验证登陆状态" class="headerlink" title="session验证登陆状态"></a>session验证登陆状态</h3><p>（临近考试（懒），待更新）—<br>title: cookie和session<br>date: 2017-12-17 16:50:37</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2>
+<h3 id="session验证登陆状态"><a href="#session验证登陆状态" class="headerlink" title="session验证登陆状态"></a>session验证登陆状态</h3><p>（临近考试（懒），待更新</p>
+
       
 
       
@@ -325,6 +325,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。"><span class="toc-number">1.</span> <span class="toc-text">怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-number"></span> <span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie的一点知识"><span class="toc-number"></span> <span class="toc-text">cookie的一点知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置和清除cookie"><span class="toc-number"></span> <span class="toc-text">设置和清除cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析cookie"><span class="toc-number"></span> <span class="toc-text">解析cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#signed-cookie"><span class="toc-number"></span> <span class="toc-text">signed cookie</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session"><span class="toc-number"></span> <span class="toc-text">session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用express-session中间件"><span class="toc-number"></span> <span class="toc-text">使用express-session中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session的储存"><span class="toc-number"></span> <span class="toc-text">session的储存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用connect-mongo将session存入mongodb"><span class="toc-number"></span> <span class="toc-text">使用connect-mongo将session存入mongodb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session的设置和删除。"><span class="toc-number"></span> <span class="toc-text">session的设置和删除。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session验证登陆状态"><span class="toc-number"></span> <span class="toc-text">session验证登陆状态</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -431,11 +444,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,19 +476,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,15 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tws</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
