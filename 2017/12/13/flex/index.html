@@ -9,14 +9,14 @@
   <title>flex | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于flex相关内容的整理 关于flex主要属性的简单介绍：  https://juejin.im/entry/58aabdf92f301e006c35b9fd https://juejin.im/entry/58ad046a128fe1006a5795c4">
-<meta name="keywords" content="note,前端,css">
+<meta name="keywords" content="note,css,前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flex">
 <meta property="og:url" content="http://yoursite.com/2017/12/13/flex/index.html">
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="关于flex相关内容的整理 关于flex主要属性的简单介绍：  https://juejin.im/entry/58aabdf92f301e006c35b9fd https://juejin.im/entry/58ad046a128fe1006a5795c4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-13T10:23:52.279Z">
+<meta property="og:updated_time" content="2017-12-25T10:48:57.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flex">
 <meta name="twitter:description" content="关于flex相关内容的整理 关于flex主要属性的简单介绍：  https://juejin.im/entry/58aabdf92f301e006c35b9fd https://juejin.im/entry/58ad046a128fe1006a5795c4">
@@ -208,7 +208,7 @@
 <p>当数值为0时，即使空间不足，也不进行压缩，元素超出父元素边界，亦即父元素不会被撑大。此时可用<code>flex-wrap: wrap</code>进行换行。</p>
 <p>注：需要设置元素本身的<code>width</code>/<code>height</code>。否则若因元素内部内容使元素超出父元素边界，<code>flex-shrink</code>不起作用。</p>
 <p>缩小的数值计算较复杂，但大致是以数值的比例对原宽度进行削减。详细可看<a href="http://www.css88.com/book/css/properties/flex/flex-shrink.htm" target="_blank" rel="noopener">这里</a></p>
-<p>详细可看<a href="https://juejin.im/entry/58ad046a128fe1006a5795c4" target="_blank" rel="noopener">这里</a>的动图</p>
+<p>效果详细可看<a href="https://juejin.im/entry/58ad046a128fe1006a5795c4" target="_blank" rel="noopener">这里</a>的动图</p>
 <h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>设置元素在主轴方向上的长度。默认值为<code>auto</code>，即元素原本大小。</p>
 <p><code>flex-basis</code>与主轴方向有关。如当<code>flex-direction</code>为<code>row</code>时，设置的是宽度。当<code>flex-direction</code>为<code>column</code>时，设置的是高度。</p>
 <p>注：会覆盖<code>width</code>/<code>height</code>。可被<code>flex-grow</code>拉伸。</p>
@@ -218,7 +218,8 @@
 <h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>设置元素本身在交叉轴上的对齐方式，可以覆盖<code>align-items</code>属性。默认为<code>auto</code>，即继承父元素<code>align-items</code>的属性。</p>
 <p>可选值：<code>flex-start</code>/<code>flex-end</code>/<code>center</code>/<code>stretch</code>/<code>baseline</code></p>
 <p>各种对齐方式详见可见<a href="https://juejin.im/entry/58aabdf92f301e006c35b9fd" target="_blank" rel="noopener">这里</a>中的动图</p>
-<h2 id="与其他CSS属性结合后拓展"><a href="#与其他CSS属性结合后拓展" class="headerlink" title="与其他CSS属性结合后拓展"></a>与其他CSS属性结合后拓展</h2><p>待补充。</p>
+<h2 id="与其他CSS属性结合后拓展"><a href="#与其他CSS属性结合后拓展" class="headerlink" title="与其他CSS属性结合后拓展"></a>与其他CSS属性结合后拓展</h2><h3 id="margin-auto"><a href="#margin-auto" class="headerlink" title="margin: auto"></a>margin: auto</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#flexbox</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此属性用于子元素，效果为水平垂直居中。相当于<code>#flexbox</code>设置了<code>justify-content: space-around</code>和<code>align-items: center</code></p>
 
       
 
@@ -236,11 +237,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
@@ -348,7 +349,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于flex相关内容的整理"><span class="toc-number">1.</span> <span class="toc-text">关于flex相关内容的整理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹性容器-flex-container-属性"><span class="toc-number"></span> <span class="toc-text">弹性容器(flex container)属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#display"><span class="toc-number"></span> <span class="toc-text">display</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-direction"><span class="toc-number"></span> <span class="toc-text">flex-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-wrap"><span class="toc-number"></span> <span class="toc-text">flex-wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-flow"><span class="toc-number"></span> <span class="toc-text">flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#justify-content"><span class="toc-number"></span> <span class="toc-text">justify-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-items"><span class="toc-number"></span> <span class="toc-text">align-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-content"><span class="toc-number"></span> <span class="toc-text">align-content</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹性元素-flex-items-属性"><span class="toc-number"></span> <span class="toc-text">弹性元素(flex items)属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#order"><span class="toc-number"></span> <span class="toc-text">order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-grow"><span class="toc-number"></span> <span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-shrink"><span class="toc-number"></span> <span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-basis"><span class="toc-number"></span> <span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-number"></span> <span class="toc-text">flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-self"><span class="toc-number"></span> <span class="toc-text">align-self</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他CSS属性结合后拓展"><span class="toc-number"></span> <span class="toc-text">与其他CSS属性结合后拓展</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于flex相关内容的整理"><span class="toc-number">1.</span> <span class="toc-text">关于flex相关内容的整理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹性容器-flex-container-属性"><span class="toc-number"></span> <span class="toc-text">弹性容器(flex container)属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#display"><span class="toc-number"></span> <span class="toc-text">display</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-direction"><span class="toc-number"></span> <span class="toc-text">flex-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-wrap"><span class="toc-number"></span> <span class="toc-text">flex-wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-flow"><span class="toc-number"></span> <span class="toc-text">flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#justify-content"><span class="toc-number"></span> <span class="toc-text">justify-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-items"><span class="toc-number"></span> <span class="toc-text">align-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-content"><span class="toc-number"></span> <span class="toc-text">align-content</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹性元素-flex-items-属性"><span class="toc-number"></span> <span class="toc-text">弹性元素(flex items)属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#order"><span class="toc-number"></span> <span class="toc-text">order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-grow"><span class="toc-number"></span> <span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-shrink"><span class="toc-number"></span> <span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-basis"><span class="toc-number"></span> <span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-number"></span> <span class="toc-text">flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-self"><span class="toc-number"></span> <span class="toc-text">align-self</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他CSS属性结合后拓展"><span class="toc-number"></span> <span class="toc-text">与其他CSS属性结合后拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#margin-auto"><span class="toc-number"></span> <span class="toc-text">margin: auto</span></a>
                     </div>
                 </span>
             </div>
@@ -460,11 +461,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,23 +485,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,10 +514,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">audio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
