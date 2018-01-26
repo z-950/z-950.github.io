@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="萌新向使用指南 参考资料：https://www.tuicool.com/articles/263AZnY">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-26T07:12:38.630Z">
+<meta property="og:updated_time" content="2018-01-26T08:32:09.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="create-react-app和socket.io">
 <meta name="twitter:description" content="萌新向使用指南 参考资料：https://www.tuicool.com/articles/263AZnY">
@@ -176,28 +176,37 @@
 <p>可与<code>express</code>一起使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)()</span><br><span class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).createServer(app)</span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(server)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.sendFile(__dirname + <span class="string">'/index.html'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a user connected'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只能使用server进行监听</span></span><br><span class="line">server.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'listening on *:3000'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p><strong>注意</strong>：此时<code>server.listen()</code>中监听的端口为<code>websocket</code>的端口。且必须使用<code>server</code>监听端口，若使用<code>app</code>监听端口，只能获取到网页文件而不能进行<code>websocket</code>连接。</p>
 <h4 id="消息推送（emit）"><a href="#消息推送（emit）" class="headerlink" title="消息推送（emit）"></a>消息推送（emit）</h4><blockquote>
-<p><code>emit</code>的相关说明不在<code>API</code>中，而是在下面的页面中做介绍：<br><a href="https://socket.io/docs/rooms-and-namespaces/" target="_blank" rel="noopener">https://socket.io/docs/rooms-and-namespaces/</a><br><a href="https://socket.io/docs/emit-cheatsheet/" target="_blank" rel="noopener">https://socket.io/docs/emit-cheatsheet/</a></p>
+<p><code>emit</code>的语法：<a href="https://socket.io/docs/server-api/#socket-emit-eventname-args-ack" target="_blank" rel="noopener">https://socket.io/docs/server-api/#socket-emit-eventname-args-ack</a><br><code>emit</code>多种推送方式的相关说明不在<code>API</code>中，而是在下面的页面中做介绍：<br><a href="https://socket.io/docs/rooms-and-namespaces/" target="_blank" rel="noopener">https://socket.io/docs/rooms-and-namespaces/</a><br><a href="https://socket.io/docs/emit-cheatsheet/" target="_blank" rel="noopener">https://socket.io/docs/emit-cheatsheet/</a></p>
 </blockquote>
+<p>语法：<code>socket.emit(eventName[, ...args][, ack])</code></p>
+<p><code>eventName</code>为推送的标志；<code>args</code>为任意多的推送数据；<code>ack</code>为一个函数，可选，在客户端应答时可被调用（可确认客户端是否接受到讯息），详见<a href="https://socket.io/docs/server-api/#socket-emit-eventname-args-ack" target="_blank" rel="noopener">官网例子</a>。</p>
 <ul>
 <li><code>io.emit</code></li>
 </ul>
-<p><code>io.emit</code>与<code>io.sockets.emit</code>等价。将消息推送至所有连接到的客户端。（准确地讲是连接到<em>默认命名空间</em>【<code>default namespace</code>】，即<code>/</code>下的所有客户端。通过<code>io.connection</code>连接的，都会连接到<code>/</code>。<code>namespace</code>很好理解，不做介绍，需要可看<a href="https://socket.io/docs/rooms-and-namespaces/#custom-namespaces" target="_blank" rel="noopener">官网</a>）</p>
+<p><code>io.emit</code>与<code>io.sockets.emit</code>等价。将消息推送至所有连接到的客户端。（准确地讲是连接到<em>默认命名空间</em><code>default namespace</code>，即<code>/</code>下的所有客户端。通过<code>io.connection</code>连接的，都会连接到<code>/</code>。<code>namespace</code>很好理解，不做介绍，需要可看<a href="https://socket.io/docs/rooms-and-namespaces/#custom-namespaces" target="_blank" rel="noopener">官网</a>）</p>
 <ul>
 <li><code>socket.emit</code></li>
 </ul>
 <p><code>socket.emit</code>中的<code>socket</code>为<code>io.on(&#39;connection&#39;, (socket) =&gt; {...})</code>中回调的参数。此为只向该客户端发送消息。</p>
-<p>更多推送可看<a href="https://socket.io/docs/emit-cheatsheet/" target="_blank" rel="noopener">官网</a>，简短易懂。</p>
+<p>更多推送方式可看<a href="https://socket.io/docs/emit-cheatsheet/" target="_blank" rel="noopener">官网</a>，简短易懂。</p>
 <h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><blockquote>
 <p>API文档：<a href="https://socket.io/docs/client-api/" target="_blank" rel="noopener">https://socket.io/docs/client-api/</a></p>
 </blockquote>
 <p>首先需要引入<code>js</code>文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接在静态html文件中写入，无其他要求</span></span><br><span class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 未遇见，可能Vue,Angular需要使用</span></span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">'socket.io-client'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在React中使用</span></span><br><span class="line"><span class="keyword">import</span> io <span class="keyword">from</span> <span class="string">'socket.io-client'</span></span><br></pre></td></tr></table></figure></p>
 <p>引入后需要<code>const socket = io()</code>来进行连接。<code>io</code>为所引入的<code>js</code>文件暴露的函数。<code>io()</code>可传入一个连接的<code>url</code>(string)。不传入则默认为<code>window.location</code>。更多见<a href="https://socket.io/docs/client-api/" target="_blank" rel="noopener">文档</a>。</p>
-<p>接收推送：<code>socket.on(&#39;Msg&#39;, (data) =&gt;{...})</code>。其中<code>Msg</code>为服务端推送对应标志。</p>
+<ul>
+<li>接收服务端推送：<code>socket.on(eventName, (...args [, fn]) =&gt;{...})</code></li>
+</ul>
+<p>其中<code>eventName</code>为服务端推送对应标志；<code>...args</code>为推送数据，与服务端对应；<code>fn</code>为回调函数，可选。</p>
+<ul>
+<li>推送数据至服务端：<code>socket.emit()</code>。语法与服务端的推送一致</li>
+</ul>
+<p><strong>注意</strong>：客户端和服务端都能进行推送和接收，且语法一致</p>
 <h2 id="create-react-app-socket-io"><a href="#create-react-app-socket-io" class="headerlink" title="create-react-app + socket.io"></a><code>create-react-app</code> + <code>socket.io</code></h2><h3 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h3><p>使用<code>create-react-app</code>新建项目后，在命令行中进入文件夹，安装<code>socket.io</code>：<code>npm i --save socket.io</code></p>
 <p>对于<code>React</code>，一般可在<code>App.js</code>中引入<code>socket.io</code>的<code>js</code>文件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span></span><br><span class="line"><span class="comment">// 此处引入</span></span><br><span class="line"><span class="keyword">import</span> io <span class="keyword">from</span> <span class="string">"socket.io-client"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            response : <span class="literal">false</span>,</span><br><span class="line">            <span class="comment">// 此处连接到本地的`3001`端口</span></span><br><span class="line">            endpoint : <span class="string">"http://127.0.0.1:3001"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; endpoint &#125; = <span class="keyword">this</span>.state</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> socket = io(endpoint)</span><br><span class="line">        socket.on(<span class="string">"Msg"</span>, data =&gt; <span class="keyword">this</span>.setState(&#123; <span class="attr">response</span> : data &#125;))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; response &#125; = <span class="keyword">this</span>.state</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &#123;response ?</span><br><span class="line">                &lt;p&gt;&#123;response&#125;&lt;<span class="regexp">/p&gt; :</span></span><br><span class="line"><span class="regexp">                &lt;p&gt;Loading...&lt;/</span>p&gt;&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App</span></span><br></pre></td></tr></table></figure></p>
-<p>对于服务端，开发阶段可以直接在项目根目录放入<code>server.js</code>文件，用来提供推送（可不使用<code>express</code>）<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).createServer()</span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(server)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3001</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> emitData = <span class="string">'emit test'</span></span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    socket.emit(<span class="string">'Msg'</span>, emitData)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Running..."</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>对于服务端，开发阶段可以直接在项目根目录放入<code>server.js</code>文件，用来提供推送（可不使用<code>express</code>）<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).createServer()</span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(server)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3001</span>   <span class="comment">// 端口要对应</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> emitData = <span class="string">'emit test'</span></span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    socket.emit(<span class="string">'Msg'</span>, emitData)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Running..."</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>进行测试时只需启动<code>server.js</code>文件并使用<code>npm start</code>即可。</p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>正式部署时，一个端口可同时用来进行网页访问和<code>websocket</code>连接。若不想再单独开启一个端口，可将<code>React</code>中<code>io()</code>传入的<code>url</code>参数清除。也可以修改服务端端口解决。</p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>正式部署时，一个端口可同时用来进行网页访问和<code>websocket</code>连接。若不想再单独开启一个端口，可将<code>React</code>中<code>io()</code>传入的<code>url</code>参数清除。</p>
 <p>使用<code>npm run build</code>将<code>React</code>项目生成静态文件，然后将<code>build</code>目录复制到服务器项目下，同时将静态目录设置为<code>build</code>文件夹。如<code>express</code>：<code>app.use(express.static(__dirname + &#39;/build&#39;))</code></p>
 
       
@@ -423,6 +432,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
@@ -431,11 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,15 +472,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
