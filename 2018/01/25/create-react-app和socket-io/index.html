@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="萌新向使用指南 参考资料：https://www.tuicool.com/articles/263AZnY">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-26T08:32:09.571Z">
+<meta property="og:updated_time" content="2018-01-30T11:03:16.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="create-react-app和socket.io">
 <meta name="twitter:description" content="萌新向使用指南 参考资料：https://www.tuicool.com/articles/263AZnY">
@@ -195,7 +195,7 @@
 <p>首先需要引入<code>js</code>文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接在静态html文件中写入，无其他要求</span></span><br><span class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 未遇见，可能Vue,Angular需要使用</span></span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">'socket.io-client'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在React中使用</span></span><br><span class="line"><span class="keyword">import</span> io <span class="keyword">from</span> <span class="string">'socket.io-client'</span></span><br></pre></td></tr></table></figure></p>
 <p>引入后需要<code>const socket = io()</code>来进行连接。<code>io</code>为所引入的<code>js</code>文件暴露的函数。<code>io()</code>可传入一个连接的<code>url</code>(string)。不传入则默认为<code>window.location</code>。更多见<a href="https://socket.io/docs/client-api/" target="_blank" rel="noopener">文档</a>。</p>
 <ul>
-<li>接收服务端推送：<code>socket.on(eventName, (...args [, fn]) =&gt;{...})</code></li>
+<li>接收服务端推送：<code>socket.on(eventName, ...args [, fn])</code></li>
 </ul>
 <p>其中<code>eventName</code>为服务端推送对应标志；<code>...args</code>为推送数据，与服务端对应；<code>fn</code>为回调函数，可选。</p>
 <ul>
@@ -432,14 +432,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
@@ -448,19 +440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前后</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,6 +461,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前后</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
