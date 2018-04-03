@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>MV*模式 | 950的个人博客</title>
+  <title>在react中使用stylus-loader | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在看Virtual DOM时恰好看到这篇文章，觉得很好，学习并分享之。 https://github.com/livoras/blog/issues/11">
-<meta name="keywords" content="note,分享">
+  <meta name="description" content="stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f  我使用create-react-app构建工程，默认隐藏所有配置。要使用stylus-loader，我们要对配置进行修改。步骤如下：  在工程根目">
+<meta name="keywords" content="react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MV*模式">
-<meta property="og:url" content="http://yoursite.com/2017/12/07/MV-模式/index.html">
+<meta property="og:title" content="在react中使用stylus-loader">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/在react中使用stylus-loader/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="在看Virtual DOM时恰好看到这篇文章，觉得很好，学习并分享之。 https://github.com/livoras/blog/issues/11">
+<meta property="og:description" content="stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f  我使用create-react-app构建工程，默认隐藏所有配置。要使用stylus-loader，我们要对配置进行修改。步骤如下：  在工程根目录下执行npm run eject，会多出几个文件夹，我们需要的是config文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-16T15:36:40.104Z">
+<meta property="og:updated_time" content="2018-04-03T07:41:10.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MV*模式">
-<meta name="twitter:description" content="在看Virtual DOM时恰好看到这篇文章，觉得很好，学习并分享之。 https://github.com/livoras/blog/issues/11">
+<meta name="twitter:title" content="在react中使用stylus-loader">
+<meta name="twitter:description" content="stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f  我使用create-react-app构建工程，默认隐藏所有配置。要使用stylus-loader，我们要对配置进行修改。步骤如下：  在工程根目录下执行npm run eject，会多出几个文件夹，我们需要的是config文">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -143,29 +143,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MV-模式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-在react中使用stylus-loader" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MV*模式
+      在react中使用stylus-loader
     </h1>
   
 
         
-        <a href="/2017/12/07/MV-模式/" class="archive-article-date">
-  	<time datetime="2017-12-07T15:19:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-07</time>
+        <a href="/2018/04/03/在react中使用stylus-loader/" class="archive-article-date">
+  	<time datetime="2018-04-03T06:44:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="在看Virtual-DOM时恰好看到这篇文章，觉得很好，学习并分享之。"><a href="#在看Virtual-DOM时恰好看到这篇文章，觉得很好，学习并分享之。" class="headerlink" title="在看Virtual DOM时恰好看到这篇文章，觉得很好，学习并分享之。"></a>在看Virtual DOM时恰好看到这篇文章，觉得很好，学习并分享之。</h4><blockquote>
-<p><a href="https://github.com/livoras/blog/issues/11" target="_blank" rel="noopener">https://github.com/livoras/blog/issues/11</a></p>
+        <p><code>stylus-loader</code>可以让<code>react</code>直接引入<code>.styl</code>文件，无需自己进行编译。</p>
+<blockquote>
+<p>参考：<a href="https://www.jianshu.com/p/9cd7a0dff11f" target="_blank" rel="noopener">https://www.jianshu.com/p/9cd7a0dff11f</a></p>
 </blockquote>
+<p>我使用<code>create-react-app</code>构建工程，默认隐藏所有配置。要使用<code>stylus-loader</code>，我们要对配置进行修改。步骤如下：</p>
+<ol>
+<li><p>在工程根目录下执行<code>npm run eject</code>，会多出几个文件夹，我们需要的是<code>config</code>文件夹。</p>
+</li>
+<li><p>安装<code>stylus</code>相关依赖，执行<code>npm i stylus stylus-loader --save-dev</code>或<code>yarn add stylus stylus-loader</code></p>
+</li>
+<li><p>打开<code>config\webpack.config.dev.js</code>，在<code>module.export -&gt; module -&gt; oneOf</code>中添加以下代码</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">test</span>: /\.styl$/,</span><br><span class="line">    use: [</span><br><span class="line">        require.<span class="built_in">resolve</span>(<span class="string">'style-loader'</span>),</span><br><span class="line">        require.<span class="built_in">resolve</span>(<span class="string">'css-loader'</span>),</span><br><span class="line">        require.<span class="built_in">resolve</span>(<span class="string">'stylus-loader'</span>)</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开<code>config\webpack.config.prod.js</code>，在<code>module.export -&gt; module -&gt; oneOf</code>中添加以下代码</p>
+<blockquote>
+<p><strong>!原文引用</strong><br>(这是我参考下面的针对的<code>css</code>配置，需要更进一步测试)这是因为<code>prod</code>环境下，所有的<code>css</code>都被<code>ExtractTextPlugin</code>插件提取到同一个样式文件中，开发环境则是动态的创建<code>style</code>标签并插入到<code>html</code>的<code>header</code>中。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="attr">    test:</span> <span class="string">/\.styl$/,</span></span><br><span class="line"><span class="attr">    loader:</span> <span class="string">ExtractTextPlugin.extract(</span></span><br><span class="line">        <span class="string">Object.assign(</span></span><br><span class="line">            <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                fallback:</span> <span class="string">require.resolve('style-loader'),</span></span><br><span class="line"><span class="attr">                use:</span> <span class="string">[</span></span><br><span class="line">                    <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                        loader:</span> <span class="string">require.resolve('css-loader'),</span></span><br><span class="line"><span class="attr">                        options:</span> <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                            importLoaders:</span> <span class="number">1</span><span class="string">,</span></span><br><span class="line"><span class="attr">                            minimize:</span> <span class="literal">true</span><span class="string">,</span></span><br><span class="line"><span class="attr">                            sourceMap:</span> <span class="string">shouldUseSourceMap,</span></span><br><span class="line">                        <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                        loader:</span> <span class="string">require.resolve('stylus-loader'),</span></span><br><span class="line">                    <span class="string">&#125;</span></span><br><span class="line">                <span class="string">],</span></span><br><span class="line">            <span class="string">&#125;,</span></span><br><span class="line">            <span class="string">extractTextPluginOptions</span></span><br><span class="line">        <span class="string">)</span></span><br><span class="line">    <span class="string">),</span></span><br><span class="line"><span class="string">//</span> <span class="attr">Note:</span> <span class="string">this</span> <span class="string">won't</span> <span class="string">work</span> <span class="string">without</span> <span class="string">`new</span> <span class="string">ExtractTextPlugin()`</span> <span class="string">in</span> <span class="string">`plugins`.</span></span><br><span class="line"><span class="string">&#125;,</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<p>这样就可以在<code>react</code>中直接引入<code>.styl</code>文件了。开发过程中没有问题，生产环境暂时没问题，还需测试。</p>
 
       
 
@@ -179,11 +197,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">note</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分享</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		
 		</ul>
@@ -239,7 +253,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/07/MV-模式/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/03/在react中使用stylus-loader/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -253,18 +267,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/12/13/flex/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          flex
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/07/iframe探究/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iframe探究</div>
+    <a href="/2018/01/25/create-react-app和socket-io/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">create-react-app和socket.io</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -291,7 +296,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#在看Virtual-DOM时恰好看到这篇文章，觉得很好，学习并分享之。"><span class="toc-number">1.</span> <span class="toc-text">在看Virtual DOM时恰好看到这篇文章，觉得很好，学习并分享之。</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
