@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://z-950.github.io">
   <title>在react中使用stylus-loader | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f  我使用create-react-app构建工程，默认隐藏所有配置。要使用stylus-loader，我们要对配置进行修改。步骤如下：  在工程根目">
+  <meta name="description" content="###stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f">
 <meta name="keywords" content="react">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在react中使用stylus-loader">
 <meta property="og:url" content="https://z-950.github.io/2018/04/03/在react中使用stylus-loader/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f  我使用create-react-app构建工程，默认隐藏所有配置。要使用stylus-loader，我们要对配置进行修改。步骤如下：  在工程根目录下执行npm run eject，会多出几个文件夹，我们需要的是config文">
+<meta property="og:description" content="###stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-03T07:41:10.021Z">
+<meta property="og:updated_time" content="2018-04-03T08:15:39.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在react中使用stylus-loader">
-<meta name="twitter:description" content="stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f  我使用create-react-app构建工程，默认隐藏所有配置。要使用stylus-loader，我们要对配置进行修改。步骤如下：  在工程根目录下执行npm run eject，会多出几个文件夹，我们需要的是config文">
+<meta name="twitter:description" content="###stylus-loader可以让react直接引入.styl文件，无需自己进行编译。  参考：https://www.jianshu.com/p/9cd7a0dff11f">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -163,12 +163,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>stylus-loader</code>可以让<code>react</code>直接引入<code>.styl</code>文件，无需自己进行编译。</p>
+        <p>###<code>stylus-loader</code>可以让<code>react</code>直接引入<code>.styl</code>文件，无需自己进行编译。</p>
 <blockquote>
 <p>参考：<a href="https://www.jianshu.com/p/9cd7a0dff11f" target="_blank" rel="noopener">https://www.jianshu.com/p/9cd7a0dff11f</a></p>
 </blockquote>
+<a id="more"></a>
 <p>我使用<code>create-react-app</code>构建工程，默认隐藏所有配置。要使用<code>stylus-loader</code>，我们要对配置进行修改。步骤如下：</p>
-<ol>
+<ul>
 <li><p>在工程根目录下执行<code>npm run eject</code>，会多出几个文件夹，我们需要的是<code>config</code>文件夹。</p>
 </li>
 <li><p>安装<code>stylus</code>相关依赖，执行<code>npm i stylus stylus-loader --save-dev</code>或<code>yarn add stylus stylus-loader</code></p>
@@ -182,7 +183,7 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="attr">    test:</span> <span class="string">/\.styl$/,</span></span><br><span class="line"><span class="attr">    loader:</span> <span class="string">ExtractTextPlugin.extract(</span></span><br><span class="line">        <span class="string">Object.assign(</span></span><br><span class="line">            <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                fallback:</span> <span class="string">require.resolve('style-loader'),</span></span><br><span class="line"><span class="attr">                use:</span> <span class="string">[</span></span><br><span class="line">                    <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                        loader:</span> <span class="string">require.resolve('css-loader'),</span></span><br><span class="line"><span class="attr">                        options:</span> <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                            importLoaders:</span> <span class="number">1</span><span class="string">,</span></span><br><span class="line"><span class="attr">                            minimize:</span> <span class="literal">true</span><span class="string">,</span></span><br><span class="line"><span class="attr">                            sourceMap:</span> <span class="string">shouldUseSourceMap,</span></span><br><span class="line">                        <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">&#123;</span></span><br><span class="line"><span class="attr">                        loader:</span> <span class="string">require.resolve('stylus-loader'),</span></span><br><span class="line">                    <span class="string">&#125;</span></span><br><span class="line">                <span class="string">],</span></span><br><span class="line">            <span class="string">&#125;,</span></span><br><span class="line">            <span class="string">extractTextPluginOptions</span></span><br><span class="line">        <span class="string">)</span></span><br><span class="line">    <span class="string">),</span></span><br><span class="line"><span class="string">//</span> <span class="attr">Note:</span> <span class="string">this</span> <span class="string">won't</span> <span class="string">work</span> <span class="string">without</span> <span class="string">`new</span> <span class="string">ExtractTextPlugin()`</span> <span class="string">in</span> <span class="string">`plugins`.</span></span><br><span class="line"><span class="string">&#125;,</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-</ol>
+</ul>
 <p>这样就可以在<code>react</code>中直接引入<code>.styl</code>文件了。开发过程中没有问题，生产环境暂时没问题，还需测试。</p>
 
       
@@ -425,15 +426,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前后</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
