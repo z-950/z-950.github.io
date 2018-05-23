@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="在React中用js实现textarea自适应，不用div自己模拟。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-08T08:58:19.581Z">
+<meta property="og:updated_time" content="2018-05-08T09:22:33.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="textarea在React中实现高度自适应">
 <meta name="twitter:description" content="在React中用js实现textarea自适应，不用div自己模拟。">
@@ -172,7 +172,7 @@
 <p>以下内容所述的<code>height</code>为数值，非字符串。<code>js</code>获取到的为字符串。</p>
 </blockquote>
 <p>对于<code>textarea</code>，<code>offsetHeight</code>是<code>textarea</code>显示的内容高度 <strong>+</strong> <code>padding</code> <strong>+</strong> <code>border</code>。当<code>box-sizing : border-box</code>时，<code>offsetHeight</code>恒等于<code>height</code>；当<code>box-sizing : content-box</code>时，<code>offsetHeight</code>恒大于<code>height</code>。无法体现出内容高度的变化，不符合要求。</p>
-<p>对于<code>textarea</code>，<code>scrollHeight</code>是内容长度（行高之和）再算上<code>padding</code>，当未产生滚动条时<code>scrollHeight</code>真正高度是<code>textarea</code>显示的内容（空白）的高度 <strong>+</strong> <code>padding</code>。所以当<code>box-sizing : border-box</code>时，<br><code>scrollHeight</code>在未产生滚动条时会小于<code>height</code>（<code>height</code>多了上下的<code>border</code>）；当<code>box-sizing : content-box</code>时，<code>scrollHeight</code>恒大于<code>height</code>。</p>
+<p>对于<code>textarea</code>，<code>scrollHeight</code>是内容长度（行高之和）再算上上下<code>padding</code>，当未产生滚动条时<code>scrollHeight</code>真正高度是<code>textarea</code>显示的内容（空白）的高度 <strong>+</strong> 上下<code>padding</code>。所以当<code>box-sizing : border-box</code>时，<code>scrollHeight</code>在未产生滚动条时会小于<code>height</code>（<code>height</code>多了上下的<code>border</code>）；当<code>box-sizing : content-box</code>时，<code>scrollHeight</code>恒大于<code>height</code>。</p>
 <p>所以我选择在<code>box-sizing : border-box</code>下用<code>scrollHeight</code>来判断输入内容是否超过显示的高度。（实际上在<code>box-sizing : content-box</code>下也是可以的，但讲起来麻烦，原理也相同）</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><blockquote>
 <p>以下均在<code>box-sizing : border-box</code>下讨论</p>
