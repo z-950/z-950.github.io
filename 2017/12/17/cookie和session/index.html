@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。2018-5-23 更新 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-lessons/tree/master/lesson16 http://www.cn">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-05T03:11:36.214Z">
+<meta property="og:updated_time" content="2018-06-05T07:45:36.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coockie和session">
 <meta name="twitter:description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。2018-5-23 更新 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-lessons/tree/master/lesson16 http://www.cn">
@@ -218,7 +218,7 @@
 <p>更多请阅读<a href="https://github.com/jdesboeufs/connect-mongo#connect-mongo" target="_blank" rel="noopener">文档</a></p>
 <h3 id="session验证登陆状态"><a href="#session验证登陆状态" class="headerlink" title="session验证登陆状态"></a>session验证登陆状态</h3><p>对于没有携带<code>session cookie</code>的访问，<code>express-session</code>都会自动给予唯一的<code>ID</code>。访问方式包括<code>GET</code>和<code>POST</code>，其他未测试。</p>
 <p>在接收到用户账号密码后，进行验证，验证完毕将用户信息存入<code>session</code>，比如<code>req.session.user = user._id</code>。在下一次访问中<code>session.user</code>的值不为<code>undefine</code>且在数据库中有对应数据，可确认已登录。</p>
-<p>如果使用<code>express-session</code>产生的<code>signed cookie</code>发送到客户端，由于同一个用户每次登录客户端收到的<code>cookie</code>都不同，故没有安全问题。</p>
+<p>使用<code>express-session</code>产生的<code>signed cookie</code>发送到客户端，同一个用户每次手动登录客户端收到的<code>cookie</code>内容都不同，故不会产生一次被盗，永远被控制的问题。但在<code>session</code>有效期内依然会有被盗取<code>cookie</code>后的安全问题，但此为环境本身不安全，无法解决。</p>
 <p>同时，后端修改<code>session</code>存储的数据也不会使<code>cookie</code>发生变化。也即，自动生成的<code>session cookie</code>仅携带<code>sessionID</code>。缺点为所有数据都保存在后端，若要为<code>cookie</code>附加其他数据，需要手动创建新的<code>cookie</code>。</p>
 
       
@@ -465,6 +465,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -473,23 +477,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,6 +494,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>

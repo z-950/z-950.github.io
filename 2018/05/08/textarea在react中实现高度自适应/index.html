@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="950的个人博客">
 <meta property="og:description" content="在React中用js实现textarea自适应，不用div自己模拟。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-08T09:22:33.629Z">
+<meta property="og:updated_time" content="2018-06-15T07:59:58.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="textarea在React中实现高度自适应">
 <meta name="twitter:description" content="在React中用js实现textarea自适应，不用div自己模拟。">
@@ -172,7 +172,7 @@
 <p>以下内容所述的<code>height</code>为数值，非字符串。<code>js</code>获取到的为字符串。</p>
 </blockquote>
 <p>对于<code>textarea</code>，<code>offsetHeight</code>是<code>textarea</code>显示的内容高度 <strong>+</strong> <code>padding</code> <strong>+</strong> <code>border</code>。当<code>box-sizing : border-box</code>时，<code>offsetHeight</code>恒等于<code>height</code>；当<code>box-sizing : content-box</code>时，<code>offsetHeight</code>恒大于<code>height</code>。无法体现出内容高度的变化，不符合要求。</p>
-<p>对于<code>textarea</code>，<code>scrollHeight</code>是内容长度（行高之和）再算上上下<code>padding</code>，当未产生滚动条时<code>scrollHeight</code>真正高度是<code>textarea</code>显示的内容（空白）的高度 <strong>+</strong> 上下<code>padding</code>。所以当<code>box-sizing : border-box</code>时，<code>scrollHeight</code>在未产生滚动条时会小于<code>height</code>（<code>height</code>多了上下的<code>border</code>）；当<code>box-sizing : content-box</code>时，<code>scrollHeight</code>恒大于<code>height</code>。</p>
+<p>对于<code>textarea</code>，<code>scrollHeight</code>是内容长度（行高之和）再算上上下<code>padding</code>，当未产生滚动条时<code>scrollHeight</code>真正高度是<code>textarea</code>显示的内容（空白）的高度 <strong>+</strong> 上下<code>padding</code>。所以当<code>box-sizing : border-box</code>时，<code>scrollHeight</code>在未产生滚动条时会小于<code>height</code>（<code>height</code>多了上下的<code>border</code>）；当<code>box-sizing : content-box</code>时，<code>scrollHeight</code>恒大于等于<code>height</code>。</p>
 <p>所以我选择在<code>box-sizing : border-box</code>下用<code>scrollHeight</code>来判断输入内容是否超过显示的高度。（实际上在<code>box-sizing : content-box</code>下也是可以的，但讲起来麻烦，原理也相同）</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><blockquote>
 <p>以下均在<code>box-sizing : border-box</code>下讨论</p>
@@ -180,11 +180,11 @@
 <h3 id="onChange-Event"><a href="#onChange-Event" class="headerlink" title="onChange Event"></a>onChange Event</h3><p>在<code>React</code>中，受控组件更新输入内容时要用到的是<code>onChange</code>事件。该事件触发的函数可接收一个参数<code>event</code>，<code>event.target</code>即为对应的<code>textarea</code>，可获取到<code>height</code>和<code>scrollHeight</code>。</p>
 <h3 id="增长"><a href="#增长" class="headerlink" title="增长"></a>增长</h3><p>使用<code>scrollHeight</code>作为判断主要是当产生滚动条时，<code>scrollHeight</code>才会超过<code>height</code>，此时可以知道需要增加<code>height</code>的值了。</p>
 <p>能够判断的关键是，每次获取到的<code>scrollHeight</code>都是最新的。这是由于每次获取<code>scrollHeight</code>，都会强制重绘，即使未更新输入内容，也会对捕获的输入进行判断，进而更新<code>scrollHeight</code>。此时获取到的<code>scrollHeight</code>就是包含了最后输入的内容的长度，即重绘后的长度。也就可以在使用<code>setState()</code>更新输入内容前，判断是否需要增长。（强制重绘发生在<code>实际DOM元素</code>上还是<code>React</code>的<code>virtual DOM</code>，想不到测试的方法，欢迎指点）</p>
-<p>然后是需要增加多少。由于<code>scrollHeight</code>是内容长度（行高之和）再算上<code>padding</code>，当我们的输出超过显示高度时，实际上只增加了 <strong>行数</strong>。<del>所以<code>height</code>也只需要增加 <strong>一个行高</strong> 即可。（因为输入没有突然增加多行的情况）</del>因为存在黏贴，即增加 <strong>多行</strong> 的情况，所以<code>height</code>设置为<code>scrollHeight</code> <strong>+</strong> 上下的<code>border</code>即可。</p>
+<p>然后是需要增加多少。由于<code>scrollHeight</code>是内容长度（行高之和）再算上<code>padding</code>，当我们的输出超过显示高度时，实际上只增加了 <strong>行数</strong>。<del>所以<code>height</code>也只需要增加 <strong>一个行高</strong> 即可。（因为输入没有突然增加多行的情况）</del>因为存在黏贴，即增加 <strong>多行</strong> 的情况，所以<code>height</code>设置为 <code>scrollHeight</code> <strong>+</strong> 上下的<code>border</code> 即可。</p>
 <h3 id="缩短"><a href="#缩短" class="headerlink" title="缩短"></a>缩短</h3><p>需要缩短时，<code>scrollHeight</code>是小于<code>height</code>的。但也可能是恰好不需要缩短的情况。</p>
 <p>由于获取<code>scrollHeight</code>会导致重绘，则只需要不断把<code>height</code>减去 <strong>一个行高</strong>，直到重绘后的<code>scrollHeight</code>超过了<code>height</code>，可判断此时已经不能再缩短<code>height</code>，退出循环。但此时内容长度已经超出<code>height</code>，故还需再给<code>height</code>加上 <strong>一个行高</strong>，使内容完全显示。</p>
 <p>以下为代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lineHeight = <span class="number">15</span>,  <span class="comment">// 默认情况下为15，若修改了line-height，则改成line-height的值</span></span><br><span class="line">    borderTop = <span class="number">1</span>,  <span class="comment">// 默认为1</span></span><br><span class="line">    borderBottom = <span class="number">1</span>    <span class="comment">// 默认为1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Textarea</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            value : <span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.handleValueChange = <span class="keyword">this</span>.handleValueChange.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleValueChange(e) &#123;</span><br><span class="line">        <span class="keyword">let</span> height = <span class="built_in">parseInt</span>(getComputedStyle(e.target).height.slice(<span class="number">0</span>, <span class="number">-2</span>), <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">if</span> (e.target.scrollHeight &gt; height) &#123;</span><br><span class="line">            e.target.style.height = <span class="string">`<span class="subst">$&#123;e.target.scrollHeight + borderTop + borderBottom&#125;</span>px`</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (height &gt;= e.target.scrollHeight) &#123;</span><br><span class="line">                e.target.style.height = <span class="string">`<span class="subst">$&#123;height - lineHeight&#125;</span>px`</span></span><br><span class="line">                height -= lineHeight</span><br><span class="line">            &#125;</span><br><span class="line">            e.target.style.height = <span class="string">`<span class="subst">$&#123;height + lineHeight&#125;</span>px`</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span> : e.target.value&#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;textarea value=&#123;<span class="keyword">this</span>.state.value&#125;</span><br><span class="line">                onChange=&#123;<span class="keyword">this</span>.handleValueChange&#125;</span><br><span class="line">            &gt;</span><br><span class="line">            &lt;<span class="regexp">/textarea&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>stylus代码（即CSS）<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">textarea&#123;</span><br><span class="line">    <span class="built_in">box</span>-sizing: border-<span class="built_in">box</span></span><br><span class="line">    <span class="built_in">min</span>-<span class="built_in">width</span>: <span class="number">450</span>px</span><br><span class="line">    <span class="built_in">max</span>-<span class="built_in">width</span>: <span class="number">450</span>px</span><br><span class="line">    padding: <span class="number">2</span>px <span class="number">4</span>px</span><br><span class="line">    <span class="built_in">line</span>-<span class="built_in">height</span>: <span class="number">15</span>px   <span class="comment">// 默认值</span></span><br><span class="line">    <span class="built_in">height</span>: <span class="number">21</span>px    <span class="comment">// 15 + (2 + 2) + (1 + 1) 行高 + 上下padding + 上下border</span></span><br><span class="line">    resize: none</span><br><span class="line">    overflow: hidden    <span class="comment">// 防止重绘时还没更新height产生滚动条，造成滚动条闪烁</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>stylus代码（即CSS）<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">textarea&#123;</span><br><span class="line">    <span class="built_in">box</span>-sizing: border-<span class="built_in">box</span></span><br><span class="line">    <span class="built_in">min</span>-<span class="built_in">width</span>: <span class="number">450</span>px</span><br><span class="line">    <span class="built_in">max</span>-<span class="built_in">width</span>: <span class="number">450</span>px</span><br><span class="line">    padding: <span class="number">2</span>px <span class="number">4</span>px</span><br><span class="line">    <span class="built_in">line</span>-<span class="built_in">height</span>: <span class="number">15</span>px   <span class="comment">// 默认值</span></span><br><span class="line">    <span class="built_in">height</span>: <span class="number">21</span>px    <span class="comment">// 15 + (2 + 2) + (1 + 1) 即：行高 + 上下padding + 上下border</span></span><br><span class="line">    resize: none</span><br><span class="line">    overflow: hidden    <span class="comment">// 防止重绘时还没更新height产生滚动条，造成滚动条闪烁</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="在普通js中的注意事项"><a href="#在普通js中的注意事项" class="headerlink" title="在普通js中的注意事项"></a>在普通js中的注意事项</h2><p>如果不是在<code>React</code>中，同样的做法也可以实现，原理也相同。此时重绘可确定发生在<code>DOM元素</code>上。但使用的事件为<code>oninput</code>。经查，<code>React</code>的<code>onChange</code>事件包含了<code>oninput</code>事件。且在<code>React</code>中，<code>onChange</code>与<code>onInput</code>无异。</p>
 
       
@@ -280,6 +280,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/29/变量命名/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          变量命名
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/03/hexo推送错误/" id="article-nav-older" class="article-nav-link-wrap">
@@ -430,6 +439,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -438,23 +451,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,6 +468,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>

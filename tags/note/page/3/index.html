@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://z-950.github.io">
-  <title>iframe探究 | 950的个人博客</title>
+  <title>Tag: note | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到） 参考资料：由于网上资料繁杂，将链接在文中给出">
-<meta name="keywords" content="note,html">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iframe探究">
-<meta property="og:url" content="https://z-950.github.io/2017/12/07/iframe探究/index.html">
+  <meta name="description" content="tws老年玩家，初识web前后端">
+<meta property="og:type" content="website">
+<meta property="og:title" content="950的个人博客">
+<meta property="og:url" content="https://z-950.github.io/tags/note/page/3/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到） 参考资料：由于网上资料繁杂，将链接在文中给出">
+<meta property="og:description" content="tws老年玩家，初识web前后端">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-11T01:35:40.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iframe探究">
-<meta name="twitter:description" content="引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到） 参考资料：由于网上资料繁杂，将链接在文中给出">
+<meta name="twitter:title" content="950的个人博客">
+<meta name="twitter:description" content="tws老年玩家，初识web前后端">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -143,94 +141,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iframe探究" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      iframe探究
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/11/28/yilia头像设置/" class="archive-article-date">
+  	<time datetime="2017-11-28T02:09:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/11/28/yilia头像设置/">yilia头像/图标设置</a>
     </h1>
   
 
-        
-        <a href="/2017/12/07/iframe探究/" class="archive-article-date">
-  	<time datetime="2017-12-07T12:28:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到）"><a href="#引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到）" class="headerlink" title="引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到）"></a>引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到）</h4><blockquote>
-<p>参考资料：由于网上资料繁杂，将链接在文中给出</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="iframe页面引用地址问题"><a href="#iframe页面引用地址问题" class="headerlink" title="iframe页面引用地址问题"></a>iframe页面引用地址问题</h2><h3 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h3><p>由于浏览器存在同源限制，被限制的情况下很多功能都无法使用，难以测试，故将此放在开头。之后可以跳着看。</p>
-<p>说下我最先遇到的坑。探究过程中我使用的是<code>chrome 62.0.3202.94</code>版本，<code>chrome</code>对同源限制比<code>IE</code>严格，我首先是直接使用本地文件，即在<code>chrome</code>中直接打开含有<code>iframe</code>的<code>html</code>文件，<code>iframe</code>的地址指为<code>src=&quot;./child.html&quot;</code>。结果<code>chrome</code>报告跨域，禁止调用子页面的函数。而在<code>IE11</code>中允许运行<code>ActiveX</code>后便可正常调用子页面中的函数。若要继续在<code>chrome</code>上测试，则需开启本地服务器，并设置<code>iframe</code>地址为相应的路由。</p>
-<h3 id="跨子域-端口"><a href="#跨子域-端口" class="headerlink" title="跨子域/端口"></a>跨子域/端口</h3><p>以下内容引用自<a href="https://segmentfault.com/a/1190000000702539" target="_blank" rel="noopener">这里</a>，有修改。</p>
-<blockquote>
-<p><code>document.domain</code>是比较常用的跨域方法。实现最简单，但只能用于同一个主域下不同子域之间或不同端口之间的跨域请求，比如：<code>foo.com</code>和<code>img.foo.com</code>之间，<code>img1.foo.com</code>和<code>img2.foo.com</code>之间。只要把两个页面的<code>document.domain</code>都指向主域就可以了，比如：<code>document.domain=&#39;foo.com&#39;</code>。设置好后父页面和子页面就可以像同一个域下两个页面之间访问了。</p>
-</blockquote>
-<p>注：由于条件有限，只测试了同一主域下不同端口（亦为增加内容），在<code>chrome</code>测得。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- foo.com/a.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">"ifr"</span> <span class="attr">src</span>=<span class="string">"http://img.foo.com/b.html"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"调用child中say函数"</span> <span class="attr">onclick</span>=<span class="string">"callChild()"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">'foo.com'</span>;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">"parent's function"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">callChild</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.frames[<span class="string">'ifr'</span>].say()</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- img.foo.com/b.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"调用parent中say函数"</span> <span class="attr">onclick</span>=<span class="string">"callParent()"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">'foo.com'</span>;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">"child's function"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">callParent</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="undefined">        parent.say();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="其他跨域访问（主要针对主域名不同）"><a href="#其他跨域访问（主要针对主域名不同）" class="headerlink" title="其他跨域访问（主要针对主域名不同）"></a>其他跨域访问（主要针对主域名不同）</h3><p>由于浏览器同源限制，父子页面都无法互相访问（无法获取<code>document</code>和<code>window</code>下大部分对象）。但父页面依然可以获取<code>iframe</code>的部分信息（但是没有有用的信息）。子界面也可以访问<code>parent</code>，但无法获取<code>parent</code>的<code>location</code>。</p>
-<p>跨域时可以获取<code>parent</code>是有适用情况的，只是较少见。</p>
-<p>以下内容来自<a href="http://www.cnblogs.com/pigtail/archive/2013/01/24/2875310.html" target="_blank" rel="noopener">这里</a>，有修改。</p>
-<blockquote>
-<p>前提，<code>www.a.com</code>下<code>a1.html</code>，<code>a1.html</code>内<code>iframe</code>调用了<code>www.b.com</code>下的<code>b.html</code>，<code>b.html</code>下<code>iframe</code>调用了<code>www.a.com</code>下的<code>a2.html</code>。即如下结构</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- a1.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"www.b.com/b.html"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- b.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"www.a.com/a2.html"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>b.html</code>无法直接访问<code>a1.html</code>的对象，因为涉及到跨域，但依旧可以用<code>parent</code>访问<code>a1.html</code>，同样<code>a2.html</code>的<code>parent</code>可以访问<code>b.html</code>。<code>a1.html</code>和<code>a2.html</code>同域，<code>a2.html</code>是可以访问<code>a1.html</code>下的对象的。故<code>a2.html</code>可用<code>parent.parent.js对象</code>访问<code>a1.html</code>中的对象。</p>
-</blockquote>
-<h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><p>注意：以下均在同源环境下测得</p>
-<h3 id="父页面调用子页面"><a href="#父页面调用子页面" class="headerlink" title="父页面调用子页面"></a>父页面调用子页面</h3><p>栗子：<code>&lt;iframe id=&quot;child&quot; name=&quot;ifr&quot; src=&quot;/child&quot;&gt;&lt;/iframe&gt;</code></p>
-<p>要调用<code>iframe</code>中的函数，则要获取<code>iframe</code>的<code>window</code>对象，可以使用<code>ifr</code>或<code>window.frames[0]</code>或<code>window.frames[&#39;ifr&#39;]</code>或<code>document.getElementById(&#39;child&#39;).contentWindow</code>。（其中<code>window.frames[0]</code>和<code>window.frames[&#39;ifr&#39;]</code>的<code>window</code>可缺省）</p>
-<p>要操作<code>iframe</code>中的<code>DOM</code>节点，即获取<code>iframe</code>的<code>document</code>，则需要使用<code>ifr.document</code>或<code>frames[0].document</code>或<code>frames[&#39;ifr&#39;].document</code>或<code>document.getElementById(&#39;child&#39;).contentDocument</code>或<code>document.getElementById(&#39;child&#39;).contentWindow.document</code></p>
-<h3 id="子页面调用父页面"><a href="#子页面调用父页面" class="headerlink" title="子页面调用父页面"></a>子页面调用父页面</h3><p>要调用父页面中的函数，则要获取父页面的<code>window</code>对象，可通过<code>window.parent</code>获取。同时<code>window.top</code>可以获取顶层页面的<code>window</code>对象。（<code>window.parent</code>和<code>window.top</code>的<code>window</code>可以缺省）</p>
-<p>要操作父页面中的<code>DOM</code>节点，即获取父页面的<code>document</code>，可以使用<code>parent.document</code>。</p>
-<h3 id="防止被其他网页调用"><a href="#防止被其他网页调用" class="headerlink" title="防止被其他网页调用"></a>防止被其他网页调用</h3><p>来自<a href="http://blog.163.com/hongshaoguoguo@126/blog/static/18046981201412682346828/" target="_blank" rel="noopener">这里</a></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span><span class="params">(window!==window.top)</span></span>&#123;</span><br><span class="line">    window<span class="selector-class">.top</span><span class="selector-class">.location</span><span class="selector-class">.href</span>=window<span class="selector-class">.location</span><span class="selector-class">.href</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者可以使用window.self!==window.top</span></span><br></pre></td></tr></table></figure>
-<h3 id="子页面刷新"><a href="#子页面刷新" class="headerlink" title="子页面刷新"></a>子页面刷新</h3><p>若是父页面控制，则调用<code>frames[&#39;ifr&#39;].location.reload()</code>（只能在同源下使用）即可。若是子页面控制，则调用<code>window.location.reload()</code>即可。</p>
-<h3 id="iframe的onload事件"><a href="#iframe的onload事件" class="headerlink" title="iframe的onload事件"></a>iframe的onload事件</h3><p>由于<code>iframe</code>加载较慢，也因此，<code>onload</code>只能设置在<code>&lt;iframe&gt;</code>标签中，不然无法通过<code>js</code>获取到<code>iframe</code>节点（即使<code>script</code>标签放在父页面<code>body</code>尾部），也就无从设置。若<code>onload</code>事件直接设置在父页面的<code>&lt;iframe&gt;</code>标签中，会获取不到子页面的<code>document</code>。若要解决可以将<code>onload</code>设置在子页面的<code>body</code>上，此时可以获取子页面中的大部分内容。（对于<code>iframe</code>的加载过程没有详细了解，有兴趣可自行查找资料）</p>
-<h3 id="子页面转跳"><a href="#子页面转跳" class="headerlink" title="子页面转跳"></a>子页面转跳</h3><p>子页面进行转跳后，可以使用浏览器的回退按钮回退。但不做任何设置，浏览器地址栏不会发生改变。</p>
-<p>使地址栏发生改变但只更新<code>iframe</code>中的内容，可以利用<code>hash</code>，即通过<code>top.location.hash</code>来设置。</p>
-<hr>
-<h5 id="以下内容为探究过程，若无耐心看完可直接跳过"><a href="#以下内容为探究过程，若无耐心看完可直接跳过" class="headerlink" title="以下内容为探究过程，若无耐心看完可直接跳过"></a>以下内容为探究过程，若无耐心看完可直接跳过</h5><p>以下内容由<a href="http://music.163.com/" target="_blank" rel="noopener">网易云音乐网页</a>和<a href="https://segmentfault.com/q/1010000003893000" target="_blank" rel="noopener">这里</a>折腾而来，在此注明。</p>
-<p>注：以下代码在本地服务端中测试通过，服务端仅设置相关路由并返回文件。</p>
-<p>然后这里就有一个坑了：如果设置点击<code>iframe</code>中的链接后更改<code>hash</code>，表面上符合要求，但是浏览器的历史回退却出现了两个地址，也就是说，要回到我们点击的时候的页面，需要点击两次后退按钮，非常不友好。而这是因为浏览器会记录<code>iframe</code>中的转跳，产生了一个历史记录，然后我们更改<code>hash</code>，浏览器也会产生一个历史记录。</p>
-<p>解决办法就是使用<code>location.replace()</code>来对<code>iframe</code>中的页面进行更新，因为使用<code>location.replace()</code>不会产生历史记录。详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Location/replace" target="_blank" rel="noopener">MDN</a></p>
-<p>（注：不通过更改<code>iframe</code>的<code>src</code>属性来刷新页面，因为这种方法也会产生历史记录）</p>
-<p>但这只是其中一步。由于我们是通过点击<code>&lt;a&gt;</code>标签来切换页面的，但是我们要用<code>location.replace()</code>来进行更新，代替<code>&lt;a&gt;</code>标签默认事件进行页面切换，所以还需要阻止<code>&lt;a&gt;</code>标签默认事件的传播，即使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/preventDefault" target="_blank" rel="noopener">event.preventDefault()</a>。</p>
-<p>暂时总结一下过程：在<code>iframe</code>中点击链接–&gt;<code>&lt;a&gt;</code>标签默认事件被禁止–&gt;使用<code>top.location.hash</code>更改地址栏地址–&gt;使用<code>location.replace()</code>更新<code>iframe</code>内容。似乎可以了，地址栏的确是只有一个历史记录。但是点一下后退，只有地址栏发生了改变，<code>iframe</code>的内容却没变。这是理所当然的，我们没有更新<code>iframe</code>的内容啊！</p>
-<p>点击后退后，页面的<code>hash</code>发生了变化，我们可以监控这个变化，来更新<code>iframe</code>。好在<code>html5</code>有一个<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onhashchange" target="_blank" rel="noopener">onhashchange</a>事件，为我们指明了道路。只需要在父（顶层）页面添加<code>onhashchang</code>事件，设置好相关函数更新<code>iframe</code>即可。</p>
-<p>然后我们的流程变成了这样：在<code>iframe</code>中点击链接–&gt;<code>&lt;a&gt;</code>标签默认事件被禁止–&gt;使用<code>top.location.hash</code>更改地址栏地址–&gt;父页面<code>onhashchange</code>监听到改变–&gt;使用<code>location.replace()</code>更新<code>iframe</code>内容。</p>
-<p>好像很完美，恩，那点一下刷新试试？你会发现刷新过后<code>iframe</code>不会显示当前的页面，而是显示了原始<code>src</code>属性对应的页面（如果设置了的话，不设置会是空白），就算是使用<code>js</code>更改过<code>src</code>，刷新后也是显示原先的<code>src</code>。极其不友好。</p>
-<p>为了使刷新也符合我们的要求，可以在主页面<code>&lt;body&gt;</code>尾部添加一个<code>hash</code>判断，既做初始化操作（可以不需要设置<code>iframe</code>的<code>src</code>），又保证<code>iframe</code>内容不会变动。代码如下。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span><span class="params">(location.hash===<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">    location.hash=<span class="string">'/child'</span></span><br><span class="line">&#125;</span><br><span class="line">frames[<span class="number">0</span>]<span class="selector-class">.location</span><span class="selector-class">.replace</span>(location.origin+location<span class="selector-class">.hash</span><span class="selector-class">.slice</span>(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<p>至此，历史功能和刷新功能已经全部符合预期。</p>
-<p>最后还有页面重定向。由于我们是用的<code>hash</code>记录位置，如果不想让<code>iframe</code>中的子页面被单独打开，只能在前端设置转跳。代码如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span><span class="params">(window===window.top)</span></span>&#123;</span><br><span class="line">    window<span class="selector-class">.location</span><span class="selector-class">.href</span> = window<span class="selector-class">.location</span><span class="selector-class">.origin</span>+</span><br><span class="line">        <span class="string">'/#'</span>+window<span class="selector-class">.location</span><span class="selector-class">.pathname</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>总结：<code>onhashchange</code>监听<code>hash</code>变化，在前进后退时更新<code>iframe</code>。<code>location.hash</code>更改地址栏地址。<code>location.replace()</code>更新<code>iframe</code>内容，不会产生历史记录。<code>event.preventDefault()</code>禁用<code>&lt;a&gt;</code>默认事件，防止产生历史记录</p>
-<p>完整代码如下：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- parent.html --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>parent page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="xml">        window.onhashchange=()=&gt;</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">            frames[0].location.replace(location.origin+</span></span><br><span class="line"><span class="template-variable">                location.hash.slice(1))</span></span><br><span class="line"><span class="template-variable">        &#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">        if(location.hash==='' || location.hash==='#/')</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">            location.hash='/child'</span></span><br><span class="line"><span class="template-variable">        &#125;</span><span class="xml">else</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">            frames[0].location.replace(location.origin+</span></span><br><span class="line"><span class="template-variable">                location.hash.slice(1))</span></span><br><span class="line"><span class="template-variable">        &#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- child.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>child page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/about"</span>&gt;</span>about<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 监控点击&lt;a&gt;标签的事件</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>,()=&gt;&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(<span class="built_in">window</span>.event.target.localName===<span class="string">'a'</span>)&#123;</span></span><br><span class="line"><span class="undefined">                event.preventDefault()</span></span><br><span class="line"><span class="undefined">                top.location.hash=event.target.pathname</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">window</span>===<span class="built_in">window</span>.top)&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">window</span>.location.href=</span></span><br><span class="line"><span class="javascript">                <span class="built_in">window</span>.location.origin+<span class="string">'/#'</span>+</span></span><br><span class="line"><span class="javascript">                <span class="built_in">window</span>.location.pathname</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- about.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>about page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/child"</span>&gt;</span>child<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 监控点击&lt;a&gt;标签的事件</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>,()=&gt;&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(<span class="built_in">window</span>.event.target.localName===<span class="string">'a'</span>)&#123;</span></span><br><span class="line"><span class="undefined">                event.preventDefault()</span></span><br><span class="line"><span class="undefined">                top.location.hash=event.target.pathname</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">window</span>===<span class="built_in">window</span>.top)&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">window</span>.location.href=</span></span><br><span class="line"><span class="javascript">                <span class="built_in">window</span>.location.origin+<span class="string">'/#'</span>+</span></span><br><span class="line"><span class="javascript">                <span class="built_in">window</span>.location.pathname</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h4><p>此方法实际上是<code>SPA</code>的实现方式的一种（无卵用(），其用<code>hash</code>记录地址的方式可以用于其它方式。若此方法要投入实际运作，需要额外的代码避免意外。（如排除无效链接、onhashchange兼容等）</p>
-<p>注：历史记录的问题还可以使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/History_API" target="_blank" rel="noopener">history.pushState</a>来制定相应方案，此处不作探讨。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>此篇主要为看到网易云网页版源码之后，一时兴起的瞎折腾。对于<code>iframe</code>的其他属性资料很多，不做整理。</p>
-<p>文章完成后，查找关键词<code>iframe单页面应用</code>时找到一个<code>iframe</code>单页面组件，有兴趣可以查看<a href="http://bh-lay.com/labs/iframer" target="_blank" rel="noopener">这里</a>。同时找到一篇思路与本篇一样的文章，但其中并无代码，顺手放出来，查看<a href="https://segmentfault.com/a/1190000004629322" target="_blank" rel="noopener">这里</a>。</p>
-<p>看到一篇关于<code>onhashchange</code>对<code>IE6-11</code>兼容性的探讨，有需求可看<a href="https://www.xiaoboy.com/topic/ie-iframe-onhashchange.html" target="_blank" rel="noopener">这里</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -240,133 +180,32 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://z-950.github.io/2017/12/07/iframe探究/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/12/07/MV-模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MV*模式
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/12/03/GET和POST/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GET和POST</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到）"><span class="toc-number">1.</span> <span class="toc-text">引用b站视频有用到iframe，看到网易云音乐页面也用的是iframe，顺手研究下（然而几乎用不到）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe页面引用地址问题"><span class="toc-number"></span> <span class="toc-text">iframe页面引用地址问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本地测试"><span class="toc-number"></span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨子域-端口"><span class="toc-number"></span> <span class="toc-text">跨子域/端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他跨域访问（主要针对主域名不同）"><span class="toc-number"></span> <span class="toc-text">其他跨域访问（主要针对主域名不同）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调用"><span class="toc-number"></span> <span class="toc-text">调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#父页面调用子页面"><span class="toc-number"></span> <span class="toc-text">父页面调用子页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子页面调用父页面"><span class="toc-number"></span> <span class="toc-text">子页面调用父页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防止被其他网页调用"><span class="toc-number"></span> <span class="toc-text">防止被其他网页调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子页面刷新"><span class="toc-number"></span> <span class="toc-text">子页面刷新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iframe的onload事件"><span class="toc-number"></span> <span class="toc-text">iframe的onload事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子页面转跳"><span class="toc-number"></span> <span class="toc-text">子页面转跳</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#以下内容为探究过程，若无耐心看完可直接跳过"><span class="toc-number">0.1.</span> <span class="toc-text">以下内容为探究过程，若无耐心看完可直接跳过</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#感想"><span class="toc-number">1.</span> <span class="toc-text">感想</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后记"><span class="toc-number"></span> <span class="toc-text">后记</span></a>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/note/page/2/">&laquo; Prev</a><a class="page-number" href="/tags/note/">1</a><a class="page-number" href="/tags/note/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -390,9 +229,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
