@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://z-950.github.io">
   <title>GET和POST | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
+  <meta name="description" content="健忘，故笔记 更新2017-12-8：经/\/\提醒，GET数据编码部分有误，已改正更新2019-5-19：更新排版，增加内容 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four">
 <meta name="keywords" content="note,js,前后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GET和POST">
 <meta property="og:url" content="https://z-950.github.io/2017/12/03/GET和POST/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
+<meta property="og:description" content="健忘，故笔记 更新2017-12-8：经/\/\提醒，GET数据编码部分有误，已改正更新2019-5-19：更新排版，增加内容 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-08T07:50:29.778Z">
+<meta property="og:updated_time" content="2019-05-19T09:17:57.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GET和POST">
-<meta name="twitter:description" content="健忘，故笔记 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
+<meta name="twitter:description" content="健忘，故笔记 更新2017-12-8：经/\/\提醒，GET数据编码部分有误，已改正更新2019-5-19：更新排版，增加内容 参考资料：  http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html https://imququ.com/post/four-ways-to-post-data-in-http.html">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -164,6 +164,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="健忘，故笔记"><a href="#健忘，故笔记" class="headerlink" title="健忘，故笔记"></a>健忘，故笔记</h4><blockquote>
+<p>更新<code>2017-12-8</code>：经<code>/\/\</code>提醒，<code>GET</code>数据编码部分有误，已改正<br>更新<code>2019-5-19</code>：更新排版，增加内容</p>
 <p>参考资料：</p>
 <ol>
 <li><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html</a></li>
@@ -171,20 +172,15 @@
 </ol>
 </blockquote>
 <a id="more"></a>
-<h2 id="一点HTTP知识"><a href="#一点HTTP知识" class="headerlink" title="一点HTTP知识"></a>一点HTTP知识</h2><p>更新<code>2017-12-8</code>：经<code>/\/\</code>提醒，<code>GET</code>数据编码部分有误，已改正</p>
-<h3 id="GET（1）"><a href="#GET（1）" class="headerlink" title="GET（1）"></a>GET<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">（1）</a></h3><ul>
-<li><code>GET</code>方式传输数据时，数据附在<code>URL</code>之后，即把数据放在<code>HTTP</code>报文的报头。以<code>?</code>分割<code>URL</code>和传输数据，参数之间以<code>&amp;</code>相连。此后只讨论传输数据（即<code>queryString</code>）的编码情况。空格会被转换成<code>+</code>或<code>%20</code>。如果数据是 <strong>ASCII码范围</strong> 的 <strong>非URL保留字</strong> 或 <strong>安全字符</strong>，保留数据。否则直接把字符串转换为<code>percent-encoded bytes</code>，得出如：<code>%E4%BD%A0%E5%A5%BD</code>，其中<code>%XX</code>中的<code>XX</code>为该符号 <strong>以16进制表示的字符编码</strong>，但所用<strong>字符集</strong>在不同情况下可能不同。（此处无了解<code>URL</code>的编码方式的需求，故不做整理（懒），放出相关链接，有兴趣可以查看。或许以后会做整理。另请注意：<strong>queryString</strong> 的编码情况与 <strong>URL整体</strong> （或 <strong>path路径</strong>）编码情况有所区别，比如对保留字符的处理）<blockquote>
+<h2 id="一点HTTP知识"><a href="#一点HTTP知识" class="headerlink" title="一点HTTP知识"></a>一点HTTP知识</h2><h4 id="GET（1）"><a href="#GET（1）" class="headerlink" title="GET（1）"></a>GET<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">（1）</a></h4><p><code>GET</code>方式传输数据时，数据附在<code>URL</code>之后，即把数据放在<code>HTTP</code>报文的报头。以<code>?</code>分割<code>URL</code>和传输数据，参数之间以<code>&amp;</code>相连。此后只讨论传输数据（即<code>queryString</code>）的编码情况。空格会被转换成<code>+</code>或<code>%20</code>。如果数据是 <strong>ASCII码范围</strong> 的 <strong>非URL保留字</strong> 或 <strong>安全字符</strong>，保留数据。否则直接把字符串转换为<code>percent-encoded bytes</code>，得出如：<code>%E4%BD%A0%E5%A5%BD</code>，其中<code>%XX</code>中的<code>XX</code>为该符号 <strong>以16进制表示的字符编码</strong>，但所用<strong>字符集</strong>在不同情况下可能不同。（此处无了解<code>URL</code>的编码方式的需求，故不做整理（懒），放出相关链接，有兴趣可以查看。或许以后会做整理。另请注意：<strong>queryString</strong> 的编码情况与 <strong>URL整体</strong> （或 <strong>path路径</strong>）编码情况有所区别，比如对保留字符的处理）</p>
+<blockquote>
 <p>【<a href="http://www.imkevinyang.com/2009/08/%E8%AF%A6%E8%A7%A3javascript%E4%B8%AD%E7%9A%84url%E7%BC%96%E8%A7%A3%E7%A0%81.html" target="_blank" rel="noopener">详解Javascript中的Url编码/解码</a>】【<a href="http://www.cnblogs.com/z-one/p/6542955.html" target="_blank" rel="noopener">js对url进行编码和解码（三种方式区别）</a>】【<a href="https://segmentfault.com/a/1190000010024438#articleHeader2" target="_blank" rel="noopener">JS中URL编码的问题</a>】【<a href="https://en.wikipedia.org/wiki/Query_string#Web_forms" target="_blank" rel="noopener">Query string wiki</a>】【<a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener">Percent-encoding wiki</a>】</p>
 </blockquote>
-</li>
-<li><code>GET</code>方式传输数据时并无数据大小限制。<code>URL</code>不存在参数上限的问题，<code>HTTP</code>协议规范没有对<code>URL</code>长度进行限制。只有特定浏览器和服务器存在限制。</li>
-<li><code>GET</code>传输数组时可按如下格式：<code>a=1&amp;a=2&amp;a=3</code>，后台自动解析后会成为数组。只支持一维，多维数组需要自定义解析。</li>
-</ul>
-<h3 id="POST（1）"><a href="#POST（1）" class="headerlink" title="POST（1）"></a>POST<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">（1）</a></h3><ul>
-<li><code>POST</code>方式传输数据时将数据放在<code>HTTP</code>报文的正文中，存在多种数据格式。</li>
-<li>理论上讲，<code>POST</code>是没有大小限制的，<code>HTTP</code>协议规范也没有进行大小限制。起限制作用的是服务器的处理程序的处理能力。</li>
-</ul>
-<h4 id="常见POST数据格式（2）"><a href="#常见POST数据格式（2）" class="headerlink" title="常见POST数据格式（2）"></a>常见POST数据格式<a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="noopener">（2）</a></h4><ul>
+<p><code>GET</code>方式传输数据时并无数据大小限制。<code>URL</code>不存在参数上限的问题，<code>HTTP</code>协议规范没有对<code>URL</code>长度进行限制。只有特定浏览器和服务器存在限制。</p>
+<p><code>GET</code>传输数组时可按如下格式：<code>a=1&amp;a=2&amp;a=3</code>，后台自动解析后会成为数组。只支持一维，多维数组需要自定义解析。</p>
+<h4 id="POST（1）"><a href="#POST（1）" class="headerlink" title="POST（1）"></a>POST<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">（1）</a></h4><p><code>POST</code>方式传输数据时将数据放在<code>HTTP</code>报文的正文中，存在多种数据格式。</p>
+<p>理论上讲，<code>POST</code>是没有大小限制的，<code>HTTP</code>协议规范也没有进行大小限制。起限制作用的是服务器的处理程序的处理能力。</p>
+<h5 id="常见POST数据格式（2）"><a href="#常见POST数据格式（2）" class="headerlink" title="常见POST数据格式（2）"></a>常见POST数据格式<a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="noopener">（2）</a></h5><ul>
 <li><code>application/x-www-form-urlencoded</code></li>
 </ul>
 <blockquote>
@@ -197,28 +193,37 @@
 <p>报文中有<code>boundary</code>分隔字符（自动生成）,将每个<code>input</code>中的数据分隔开来。需要在<code>input</code>中注明<code>name</code>属性，服务器才可获取，每个单元中有说明数据格式，默认为<code>text/plain</code>。后端自动解析为<code>key-value</code>，<code>value</code>均为字符串。若有重复的<code>name</code>，会自动解析生成数组，不会导致数据被覆盖，与<code>GET</code>实际上类似。可用来上传文件，<code>body</code>中会包含文件的<code>MIME</code>格式（<code>Content-Type</code>）。</p>
 </blockquote>
 <ul>
-<li><code>application/json</code></li>
+<li><p><code>text/plain</code></p>
+</li>
+<li><p><code>application/json</code></p>
+</li>
 </ul>
 <blockquote>
 <p>可以包含复杂的数据类型</p>
 </blockquote>
-<h2 id="HTML中实现方式"><a href="#HTML中实现方式" class="headerlink" title="HTML中实现方式"></a>HTML中实现方式</h2><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>普通的<code>form</code>即可实现。<code>form</code>默认为<code>GET</code>方法提交。<code>action</code>为提交网址。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">form</span> action=<span class="string">"/submit"</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"name"</span>&gt;    </span><br><span class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"submit"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><h4 id="使用form"><a href="#使用form" class="headerlink" title="使用form"></a>使用form</h4><p>只要设置<code>form</code>中的<code>method</code>属性为<code>post</code>即可。<code>enctype</code>属性设置数据格式。默认为<code>application/x-www-form-urlencoded</code>。而当上传文件时，只能用<code>multipart/form-data</code>。上传多个文件时需设置<code>&lt;input&gt;</code>的<code>multiple</code>属性。更多详细请前往<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input" target="_blank" rel="noopener">MDN</a></p>
+<h2 id="前端中发送方式"><a href="#前端中发送方式" class="headerlink" title="前端中发送方式"></a>前端中发送方式</h2><h4 id="form"><a href="#form" class="headerlink" title="form"></a>form</h4><h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><p><code>form</code>默认为<code>GET</code>方法提交。<code>action</code>为提交网址。</p>
+<h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><p>只要设置<code>form</code>中的<code>method</code>属性为<code>post</code>即可。</p>
+<p><code>&lt;form&gt;</code>的<code>enctype</code>属性设置数据格式。有：<code>application/x-www-form-urlencoded</code>，<code>multipart/form-data</code>，<code>text/plain</code>(HTML5)。默认为<code>application/x-www-form-urlencoded</code>。而当上传文件时，只能用<code>multipart/form-data</code>。上传多个文件时需设置<code>&lt;input&gt;</code>的<code>multiple</code>属性。</p>
+<p>更多详细请前往<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input" target="_blank" rel="noopener">MDN</a></p>
 <p>缺点：浏览器会有转跳。</p>
 <p>注：<code>method</code>和<code>enctype</code>可能被覆盖。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#attr-enctype" target="_blank" rel="noopener">见此处</a></p>
-<h4 id="使用fetch"><a href="#使用fetch" class="headerlink" title="使用fetch"></a>使用fetch</h4><p><code>fetch</code>可以实现多种提交方式和数据类型，此处为<code>POST</code>提交<code>JSON</code>数据。<code>JSON</code>数据可由<code>JSON.stringify</code>从指定对象中生成。<code>fetch</code>详细<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalFetch/fetch#语法" target="_blank" rel="noopener">见此处</a><br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fetch</span>(<span class="string">'/submit'</span>,&#123;</span><br><span class="line">    <span class="attribute">method</span>: <span class="string">'POST'</span>,</span><br><span class="line">    <span class="attribute">headers</span>: &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attribute">body</span>: JSON.stringify(&#123;</span><br><span class="line">        <span class="attribute">a</span>:&#123;</span><br><span class="line">            <span class="attribute">b</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attribute">c</span>:[[<span class="number">1</span>,[<span class="number">2</span>]],<span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>注：<code>XMLHttpRequest</code>与<code>fetch</code>相似，若不追求兼容性，更推荐<code>fetch</code>。<code>fetch</code>也能实现<code>ajax</code>。</p>
+<p>再注：无法传送<code>application/json</code>类型数据。</p>
+<h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p><code>fetch</code>可以实现多种提交方式和数据类型，此处为<code>POST</code>提交<code>JSON</code>数据。<code>JSON</code>数据可由<code>JSON.stringify</code>从指定对象中生成。<code>fetch</code>详细<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalFetch/fetch#语法" target="_blank" rel="noopener">见此处</a><br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fetch</span>(<span class="string">'/submit'</span>,&#123;</span><br><span class="line">    <span class="attribute">method</span>: <span class="string">'POST'</span>,</span><br><span class="line">    <span class="attribute">headers</span>: &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attribute">body</span>: JSON.stringify(&#123;</span><br><span class="line">        <span class="attribute">a</span>:&#123;</span><br><span class="line">            <span class="attribute">b</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attribute">c</span>:[[<span class="number">1</span>,[<span class="number">2</span>]],<span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>fetch</code>获取服务器返回数据（详细<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Response" target="_blank" rel="noopener">见此处</a>）<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="built_in">..</span>.)</span><br><span class="line">    .then(<span class="attribute">res</span>=&gt;&#123;res.json())</span><br><span class="line">    .then(<span class="attribute">data</span>=&gt;&#123;</span><br><span class="line">        <span class="built_in">..</span>.</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>注：<code>XMLHttpRequest</code>与<code>fetch</code>相似，若不追求兼容性，更推荐<code>fetch</code>。<code>fetch</code>也能实现<code>ajax</code>，但现在渲染主要交给前端，服务器仅返回数据，返回内容通常为<code>JSON</code>。</p>
 <h2 id="后台接收（Node-js）"><a href="#后台接收（Node-js）" class="headerlink" title="后台接收（Node.js）"></a>后台接收（Node.js）</h2><p>（已引入模块：<code>express</code>）</p>
-<h3 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h3><p>只需使用<code>req.query</code>即可获得解析后生成的对象<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.query)</span><br><span class="line">    res.redirect(<span class="number">303</span>,<span class="string">'/'</span>)  <span class="regexp">//</span> 转跳</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h3><h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>需要使用<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">body-parser</a>中间件解析<code>POST</code>方式传输的<code>application/x-www-form-urlencoded</code>和<code>application/json</code>格式数据。参数详解看<a href="http://www.jianshu.com/p/ea0122ad1ac0" target="_blank" rel="noopener">这里</a>（可能与新版本有出入，以<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">github</a>上为准）</p>
+<h4 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h4><p>只需使用<code>req.query</code>即可获得解析后生成的对象<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.query)</span><br><span class="line">    res.redirect(<span class="number">303</span>,<span class="string">'/'</span>)  <span class="regexp">//</span> 转跳</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h4><h5 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h5><p><code>text/plain</code>可以直接接收。代码如下：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">let</span> arr=[], chunks, <span class="class"><span class="keyword">data</span></span></span><br><span class="line"><span class="title">req</span>.on('<span class="class"><span class="keyword">data</span>', buff =&gt; &#123;</span></span><br><span class="line"><span class="class">    <span class="title">arr</span>.<span class="title">push</span>(<span class="title">buff</span>);</span></span><br><span class="line"><span class="class">&#125;);</span></span><br><span class="line"><span class="title">req</span>.on('end', () =&gt; &#123;</span><br><span class="line">    chunks = <span class="type">Buffer</span>.concat(arr);</span><br><span class="line">    <span class="class"><span class="keyword">data</span> = chunks.toString();</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>application/x-www-form-urlencoded</code>和<code>application/json</code>需要使用<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">body-parser</a>中间件解析数据。参数详解看<a href="http://www.jianshu.com/p/ea0122ad1ac0" target="_blank" rel="noopener">这里</a>（可能与新版本有出入，以<a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">github</a>上为准）</p>
 <p>在路由之前添加中间件<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for parsing application/json</span></span><br><span class="line"><span class="keyword">app</span>.<span class="keyword">use</span>(bodyParser.json())</span><br><span class="line"><span class="comment">// for parsing application/x-www-form-urlencoded</span></span><br><span class="line"><span class="keyword">app</span>.<span class="keyword">use</span>(bodyParser.urlencoded(&#123; extended: true &#125;))</span><br></pre></td></tr></table></figure></p>
 <p>然后即可用<code>req.body</code>获取解析后生成的对象，两种数据类型生成的对象无差别。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/submit'</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.body)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>注：<code>body-parser</code>不支持<code>multipart/form-data</code>，此类型在下方提到</p>
-<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>若不使用<code>express</code>则可以用<code>res.on(&#39;data&#39;,chunk =&gt;{...})</code>，但此方法需要考虑很多因素，需要额外的代码来使其更为健壮，在此不予讨论。有需要可以参考<a href="http://blog.csdn.net/yang_ge_98/article/details/52921858" target="_blank" rel="noopener">这篇文章</a>或<a href="https://itbilu.com/nodejs/core/VkK5RCoXW.html" target="_blank" rel="noopener">这篇文章</a></p>
+<h5 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h5><p>若不使用<code>express</code>则可以用<code>res.on(&#39;data&#39;,chunk =&gt;{...})</code>，但此方法需要考虑很多因素，需要额外的代码来使其更为健壮，在此不予讨论。有需要可以参考<a href="http://blog.csdn.net/yang_ge_98/article/details/52921858" target="_blank" rel="noopener">这篇文章</a>或<a href="https://itbilu.com/nodejs/core/VkK5RCoXW.html" target="_blank" rel="noopener">这篇文章</a></p>
 <p>我选择引入<a href="https://www.npmjs.com/package/formidable" target="_blank" rel="noopener">Formidable</a>模块<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/submit'</span>, <span class="function"><span class="params">(req, res)</span>=&gt;</span>&#123;</span><br><span class="line">    const form = <span class="keyword">new</span> formidable.IncomingForm()</span><br><span class="line">    form.multiples = <span class="literal">true</span></span><br><span class="line">    form.parse(req, <span class="function"><span class="params">(err, fields, files)</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) <span class="keyword">return</span> res.redirect(<span class="number">303</span>, <span class="string">'/error'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'获取到的数据:'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(fields)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'获取到的文件:'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(files)</span><br><span class="line">    &#125;);</span><br><span class="line">    res.redirect(<span class="number">303</span>, <span class="string">'/'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>其中<code>form.multiples = true</code>可以在<code>input</code>设置了<code>multiple</code>后上传多个文件时生成数组。默认为<code>false</code>，此时只能获取一个文件的信息。</p>
 <p><code>multipart/form-data</code>中数据也可以此模块获取（也可以使用其他包，比如<a href="https://github.com/pillarjs/multiparty" target="_blank" rel="noopener">multiparty</a>）</p>
 <p>注：更多设置请查找<a href="https://www.npmjs.com/package/formidable" target="_blank" rel="noopener">Formidable</a></p>
+<h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><p>唯一指定<code>postman</code></p>
 
       
 
@@ -348,7 +353,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#健忘，故笔记"><span class="toc-number">1.</span> <span class="toc-text">健忘，故笔记</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点HTTP知识"><span class="toc-number"></span> <span class="toc-text">一点HTTP知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET（1）"><span class="toc-number"></span> <span class="toc-text">GET（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST（1）"><span class="toc-number"></span> <span class="toc-text">POST（1）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常见POST数据格式（2）"><span class="toc-number">1.</span> <span class="toc-text">常见POST数据格式（2）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML中实现方式"><span class="toc-number"></span> <span class="toc-text">HTML中实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET"><span class="toc-number"></span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST"><span class="toc-number"></span> <span class="toc-text">POST</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用form"><span class="toc-number">1.</span> <span class="toc-text">使用form</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用fetch"><span class="toc-number">2.</span> <span class="toc-text">使用fetch</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台接收（Node-js）"><span class="toc-number"></span> <span class="toc-text">后台接收（Node.js）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET-1"><span class="toc-number"></span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST-1"><span class="toc-number"></span> <span class="toc-text">POST</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据"><span class="toc-number">1.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件"><span class="toc-number">2.</span> <span class="toc-text">文件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#健忘，故笔记"><span class="toc-number">1.</span> <span class="toc-text">健忘，故笔记</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点HTTP知识"><span class="toc-number"></span> <span class="toc-text">一点HTTP知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GET（1）"><span class="toc-number">1.</span> <span class="toc-text">GET（1）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST（1）"><span class="toc-number">2.</span> <span class="toc-text">POST（1）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常见POST数据格式（2）"><span class="toc-number">2.1.</span> <span class="toc-text">常见POST数据格式（2）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前端中发送方式"><span class="toc-number"></span> <span class="toc-text">前端中发送方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#form"><span class="toc-number">1.</span> <span class="toc-text">form</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#GET"><span class="toc-number">1.1.</span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#POST"><span class="toc-number">1.2.</span> <span class="toc-text">POST</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fetch"><span class="toc-number">2.</span> <span class="toc-text">fetch</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台接收（Node-js）"><span class="toc-number"></span> <span class="toc-text">后台接收（Node.js）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GET-1"><span class="toc-number">1.</span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST-1"><span class="toc-number">2.</span> <span class="toc-text">POST</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数据"><span class="toc-number">2.1.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#文件"><span class="toc-number">2.2.</span> <span class="toc-text">文件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试工具"><span class="toc-number"></span> <span class="toc-text">测试工具</span></a>
                     </div>
                 </span>
             </div>
@@ -468,11 +473,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">前后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,14 +494,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,6 +514,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>
@@ -559,7 +572,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;p&gt;tws老年玩家&lt;/p&gt;&lt;p&gt;初识web前后端&lt;/p&gt;&lt;p&gt;react,stylus,nodejs&lt;/p&gt;&lt;br&gt;&lt;p&gt;本站文章使用「&lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/deed.zh&#34;&gt;署名 4.0 国际（CC BY 4.0）&lt;/a&gt;」创作共享协议。即在引用时署名后，可进行节选、混编、二次创作，且允许商业性使用&lt;/p&gt;&lt;br&gt;&lt;p&gt;联系我：1033766950@qq.com&lt;/p&gt;</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;p&gt;tws老年玩家&lt;/p&gt;&lt;p&gt;初识web前后端&lt;/p&gt;&lt;p&gt;react,vue,stylus,nodejs&lt;/p&gt;&lt;br&gt;&lt;p&gt;本站文章使用「&lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/deed.zh&#34;&gt;署名 4.0 国际（CC BY 4.0）&lt;/a&gt;」创作共享协议。即在引用时署名后，可进行节选、混编、二次创作，且允许商业性使用&lt;/p&gt;&lt;br&gt;&lt;p&gt;联系我：1033766950@qq.com&lt;/p&gt;</div>
   	  	
     	</section>
     
