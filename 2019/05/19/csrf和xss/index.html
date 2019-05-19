@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://z-950.github.io">
-  <title>coockie和session | 950的个人博客</title>
+  <title>csrf和xss | 950的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。 更新2018-5-23 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-le">
-<meta name="keywords" content="nodejs,后端">
+  <meta name="description" content="由cookies安全了解的 参考资料：  https://github.com/pillarjs/understanding-csrf/blob/master/README_zh.md http://blog.knownsec.com/wp-content/uploads/2014/07/%E7%BB%99%E5%BC">
+<meta name="keywords" content="前后端,安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="coockie和session">
-<meta property="og:url" content="https://z-950.github.io/2017/12/17/cookie和session/index.html">
+<meta property="og:title" content="csrf和xss">
+<meta property="og:url" content="https://z-950.github.io/2019/05/19/csrf和xss/index.html">
 <meta property="og:site_name" content="950的个人博客">
-<meta property="og:description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。 更新2018-5-23 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-lessons/tree/master/lesson16 http://www.cn">
+<meta property="og:description" content="由cookies安全了解的 参考资料：  https://github.com/pillarjs/understanding-csrf/blob/master/README_zh.md http://blog.knownsec.com/wp-content/uploads/2014/07/%E7%BB%99%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E7%BB%88%">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T18:16:06.592Z">
+<meta property="og:updated_time" content="2019-05-19T14:28:10.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="coockie和session">
-<meta name="twitter:description" content="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。 更新2018-5-23 参考资料：  https://segmentfault.com/a/1190000004139342 https://github.com/alsotang/node-lessons/tree/master/lesson16 http://www.cn">
+<meta name="twitter:title" content="csrf和xss">
+<meta name="twitter:description" content="由cookies安全了解的 参考资料：  https://github.com/pillarjs/understanding-csrf/blob/master/README_zh.md http://blog.knownsec.com/wp-content/uploads/2014/07/%E7%BB%99%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E7%BB%88%">
   
     <link rel="alternative" href="/atom.xml" title="950的个人博客" type="application/atom+xml">
   
@@ -143,84 +143,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-cookie和session" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-csrf和xss" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      coockie和session
+      csrf和xss
     </h1>
   
 
         
-        <a href="/2017/12/17/cookie和session/" class="archive-article-date">
-  	<time datetime="2017-12-17T08:51:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-17</time>
+        <a href="/2019/05/19/csrf和xss/" class="archive-article-date">
+  	<time datetime="2019-05-19T02:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。"><a href="#怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。" class="headerlink" title="怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。"></a>怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。</h4><blockquote>
-<p>更新<code>2018-5-23</code></p>
+        <h4 id="由cookies安全了解的"><a href="#由cookies安全了解的" class="headerlink" title="由cookies安全了解的"></a>由cookies安全了解的</h4><blockquote>
 <p>参考资料：</p>
 <ul>
-<li><a href="https://segmentfault.com/a/1190000004139342" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004139342</a></li>
-<li><a href="https://github.com/alsotang/node-lessons/tree/master/lesson16" target="_blank" rel="noopener">https://github.com/alsotang/node-lessons/tree/master/lesson16</a></li>
-<li><a href="http://www.cnblogs.com/chenchenluo/p/4197181.html" target="_blank" rel="noopener">http://www.cnblogs.com/chenchenluo/p/4197181.html</a></li>
-<li><a href="https://github.com/cnodejs/nodeclub/issues/874" target="_blank" rel="noopener">https://github.com/cnodejs/nodeclub/issues/874</a></li>
+<li><a href="https://github.com/pillarjs/understanding-csrf/blob/master/README_zh.md" target="_blank" rel="noopener">https://github.com/pillarjs/understanding-csrf/blob/master/README_zh.md</a></li>
+<li><a href="http://blog.knownsec.com/wp-content/uploads/2014/07/%E7%BB%99%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E7%BB%88%E6%9E%81XSS%E9%98%B2%E6%8A%A4%E5%A4%87%E5%BF%98%E5%BD%95.pdf" target="_blank" rel="noopener">http://blog.knownsec.com/wp-content/uploads/2014/07/%E7%BB%99%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E7%BB%88%E6%9E%81XSS%E9%98%B2%E6%8A%A4%E5%A4%87%E5%BF%98%E5%BD%95.pdf</a></li>
 </ul>
 </blockquote>
 <a id="more"></a>
-<p>所使用模块版本</p>
-<ul>
-<li><code>express: 4.16.2</code></li>
-<li><code>cookie-parser: 1.4.3</code></li>
-<li><code>express-session: 1.15.6</code></li>
-<li><code>connect-mongo: 2.0.0</code></li>
-</ul>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h3 id="cookie的一点知识"><a href="#cookie的一点知识" class="headerlink" title="cookie的一点知识"></a>cookie的一点知识</h3><p><code>cookie</code>储存在客户端，且有大小限制。不可跨域。访问网站时若有可用的<code>cookie</code>会附带在<code>http</code>请求报文中。浏览器对<code>cookie</code>有大小和个数限制。</p>
-<h3 id="设置和清除cookie"><a href="#设置和清除cookie" class="headerlink" title="设置和清除cookie"></a>设置和清除cookie</h3><p><code>express</code>本身就提供设置和清除<code>cookie</code>的方法。</p>
-<p><strong><code>res.cookie( name , value [,options] )</code>可以设置<code>cookie</code></strong></p>
-<p>其中<code>name</code>类型为<code>string</code>。<code>value</code>为<code>cookie</code>所储存的数据，可使用<code>string</code>和<code>object</code>。</p>
-<p>如果<code>value</code>为<code>string</code>则默认原样发送。若为<code>object</code>则默认使用<code>JSON.stringify</code>处理后再发送（和主动使用有区别，默认处理后，报文中的数据前多了<code>j:</code>）。<code>cookie</code>在报文中显示格式为<code>name1=value1;name2=value2</code>。报文中数据编码方式与对<code>URL</code>的编码相似（未详细考究，已知不安全字符和中文的处理方式相同），都是编码后使用<code>percent-encoded</code>表示。</p>
-<p><code>options</code>为<code>object</code>。常用设置如下：</p>
-<ul>
-<li><code>httpOnly</code>：可选值<code>true</code>/<code>false</code>，默认为<code>false</code>。为<code>true</code>时无法用<code>js</code>获取到该<code>cookie</code></li>
-<li><code>maxAge</code>：设置<code>cookie</code>有效时间，单位为毫秒。</li>
-<li><code>path</code>：设置有效路径，默认为<code>/</code>。当为默认值时，对所有页面有效，即所有页面均能获取该<code>cookie</code></li>
-</ul>
-<p><strong><code>res.clearCookie( name [,options])</code>可以删除<code>cookie</code></strong></p>
-<p><code>name</code>为<code>cookie</code>的标识。<code>options</code>基本不会用到。</p>
-<p>关于设置、删除<code>cookie</code>的详细参数配置可看<a href="http://expressjs.com/en/api.html#res.cookie" target="_blank" rel="noopener">这里</a></p>
-<h3 id="解析cookie"><a href="#解析cookie" class="headerlink" title="解析cookie"></a>解析cookie</h3><p>需要引入<a href="https://github.com/expressjs/cookie-parser#cookie-parser" target="_blank" rel="noopener">cookie-parser</a>中间件。然后在路由中直接使用<code>req.cookies</code>即可。</p>
-<p><code>req.cookies</code>获取到的是<code>cookie</code>组成的对象。</p>
-<h3 id="关于signed-cookie"><a href="#关于signed-cookie" class="headerlink" title="关于signed cookie"></a>关于signed cookie</h3><p>设置<code>signed cookie</code>首先需要使用<code>cookie-parser</code>中间件，并传入<code>secret</code>（即签名字符，<code>string</code>类型）。然后在<code>res.cookie</code>的<code>options</code>中设置<code>signed:true</code>，就会使用<code>secret</code>对<code>cookie</code>进行签名。</p>
-<p>删除<code>signed cookie</code>也是用<code>res.clearCookie()</code></p>
-<p>解析<code>signed cookie</code>也需要使用<code>cookie-parser</code>中间件，然后在路由中用<code>req.signedCookies</code>获取，得到一个对象。</p>
-<p><del><code>cookie-parser</code>对<code>cookie</code>如何签名的详细请阅读相关源码或自行搜索（</del></p>
-<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>需要引入<a href="https://github.com/expressjs/session#express-session" target="_blank" rel="noopener">express-session</a>中间件，能解析、设置和删除<code>session</code>。</p>
-<p>注：<code>1.5.0</code>版本后已经不需要额外引入<code>cookie-parser</code>中间件。</p>
-<h3 id="使用express-session中间件"><a href="#使用express-session中间件" class="headerlink" title="使用express-session中间件"></a>使用express-session中间件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="keyword">require</span>(<span class="string">'express-session'</span>)</span><br><span class="line">app.<span class="keyword">use</span>(</span><br><span class="line">    session(&#123;</span><br><span class="line">        name: <span class="string">'cookieName'</span>   <span class="comment">// 设置cookie的name。默认为connect.sid</span></span><br><span class="line">        secret: <span class="string">'string'</span>,     <span class="comment">// 设置用来对cookie签名的字符串，建议为128位随机字符串</span></span><br><span class="line">        saveUninitialized: <span class="keyword">false</span>,   <span class="comment">// 对登录session，通常设置为false</span></span><br><span class="line">        <span class="comment">// resave: 无论数据是否更改，都再保存，默认为true（是否需要具体看文档，未能理解）</span></span><br><span class="line">        resave: <span class="keyword">false</span>,</span><br><span class="line">        cookie: &#123;</span><br><span class="line">            <span class="comment">// maxAge默认为null，不设置会成为session cookie，关闭标签即失效</span></span><br><span class="line">            httpOnly: <span class="keyword">true</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>注：<code>express-session</code>强制要求使用<code>secret</code>对<code>cookie</code>进行签名，且只需设置<code>secret</code>，<code>cookie</code>中不需要设置<code>signed:true</code>。</p>
-<p><code>session</code>中传入参数详见<a href="https://github.com/expressjs/session#express-session" target="_blank" rel="noopener">文档</a></p>
-<h3 id="session的设置和删除。"><a href="#session的设置和删除。" class="headerlink" title="session的设置和删除。"></a>session的设置和删除。</h3><p>设置。使用中间件<code>app.use(session({...}))</code>后，在路由中使用<code>req.session.anyKey</code>进行读写。其值可设置为<code>string</code>或<code>object</code>。若没有设定任何值，且设置中<code>saveUninitialized: false</code>，则<code>session</code>不会被保存。</p>
-<p>删除。使用<code>req.session.destroy((err)=&gt;{...})</code>即可清除<code>session</code>。若想同时删除浏览器中的<code>session cookie</code>，可以这样。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">req.session.destory(<span class="function"><span class="params">(err)</span>=&gt;</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    res.clearCookie(<span class="string">'cookieName'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="session的储存"><a href="#session的储存" class="headerlink" title="session的储存"></a>session的储存</h3><p><code>session</code>可以存在<em>内存</em>、<em>cookie本身</em>、<em>redis等缓存</em>、<em>数据库</em>中。<code>express-session</code>默认储存在内存中。</p>
-<p><em>内存</em>和<em>cookie本身</em>不太合适。储存在<em>内存</em>中无法在多进程时共享数据，关闭服务器后数据丢失。储存在<em>cookie本身</em>中有安全问题且增加了传输的数据量。</p>
-<p><em>redis等缓存</em>可以共享状态（多进程时），速度快。<code>redis</code>是一个基于内存的键值数据库，支持共享数据，但数据量过大时无法单独使用。</p>
-<p><em>数据库</em>可保存足够多的数据，缺点是查找速度较缓存慢。</p>
-<h3 id="使用connect-mongo将session存入mongodb"><a href="#使用connect-mongo将session存入mongodb" class="headerlink" title="使用connect-mongo将session存入mongodb"></a>使用connect-mongo将session存入mongodb</h3><p>首先声明<code>redis</code>是基于内存的，速度肯定比存<code>mongodb</code>快。考虑到数据量过大时，单<code>redis</code>会有数据丢失，由于学生机，本人选择用<code>mongodb</code>。（更好的做法是<code>redis + mongodb</code>，待填坑）</p>
-<p>需要先引入<a href="https://github.com/jdesboeufs/connect-mongo#connect-mongo" target="_blank" rel="noopener">connect-mongo</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>)</span><br><span class="line"><span class="keyword">const</span> mongoStore = <span class="built_in">require</span>(<span class="string">'connect-mongo'</span>)(session)</span><br></pre></td></tr></table></figure>
-<p>然后在<code>express-session</code>中间件中进行设置。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">app.use(</span></span><br><span class="line">    <span class="string">session(&#123;</span></span><br><span class="line"><span class="attr">        secret:</span> <span class="string">'1234'</span><span class="string">,</span></span><br><span class="line"></span><br><span class="line"><span class="attr">        store:</span> <span class="string">new</span> <span class="string">mongoStore(&#123;</span></span><br><span class="line"><span class="attr">            url:</span> <span class="string">'mongodb://localhost/test'</span><span class="string">,</span>    <span class="string">//</span> <span class="string">mongodb数据库地址。</span></span><br><span class="line">        <span class="string">&#125;),</span></span><br><span class="line"></span><br><span class="line"><span class="attr">        saveUninitialized:</span> <span class="literal">false</span><span class="string">,</span></span><br><span class="line"><span class="attr">        resave:</span> <span class="literal">false</span><span class="string">,</span></span><br><span class="line"><span class="attr">        cookie:</span> <span class="string">&#123;</span></span><br><span class="line"><span class="attr">            httpOnly:</span> <span class="literal">true</span><span class="string">,</span></span><br><span class="line">            <span class="string">//</span> <span class="string">maxAge设置了cookie和session的有效时间。（小于一分钟对session无效</span></span><br><span class="line"><span class="attr">            maxAge:</span> <span class="number">1000</span> <span class="string">*</span> <span class="number">60</span> <span class="string">*</span> <span class="number">60</span> <span class="string">*</span> <span class="number">24</span></span><br><span class="line">        <span class="string">&#125;</span></span><br><span class="line">    <span class="string">&#125;)</span></span><br><span class="line"><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
-<p>更多请阅读<a href="https://github.com/jdesboeufs/connect-mongo#connect-mongo" target="_blank" rel="noopener">文档</a></p>
-<h3 id="session验证登陆状态"><a href="#session验证登陆状态" class="headerlink" title="session验证登陆状态"></a>session验证登陆状态</h3><p>对于没有携带<code>session cookie</code>的访问，<code>express-session</code>都会自动给予唯一的<code>ID</code>。访问方式包括<code>GET</code>和<code>POST</code>，其他未测试。</p>
-<p>在接收到用户账号密码后，进行验证，验证完毕将用户信息存入<code>session</code>，比如<code>req.session.user = user._id</code>。在下一次访问中<code>session.user</code>的值不为<code>undefine</code>且在数据库中有对应数据，可确认已登录。</p>
-<p>使用<code>express-session</code>产生的<code>signed cookie</code>发送到客户端，同一个用户每次手动登录客户端收到的<code>cookie</code>内容都不同，故不会产生一次被盗，永远被控制的问题。但在<code>session</code>有效期内依然会有被盗取<code>cookie</code>后的安全问题，但此为环境本身不安全，无法解决。</p>
-<p>同时，后端修改<code>session</code>存储的数据也不会使<code>cookie</code>发生变化。也即，自动生成的<code>session cookie</code>仅携带<code>sessionID</code>。缺点为所有数据都保存在后端，若要为<code>cookie</code>附加其他数据，需要手动创建新的<code>cookie</code>。</p>
+<h2 id="csrf"><a href="#csrf" class="headerlink" title="csrf"></a>csrf</h2><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>csrf发生在浏览器中，原理容易理解，不多赘述。可看<a href="https://github.com/pillarjs/understanding-csrf/blob/master/README_zh.md" target="_blank" rel="noopener">这里</a></p>
+<h4 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h4><h5 id="数据传输格式使用JSON"><a href="#数据传输格式使用JSON" class="headerlink" title="数据传输格式使用JSON"></a>数据传输格式使用JSON</h5><p><code>form</code>表单提交不支持<code>JSON</code>（<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#Attributes" target="_blank" rel="noopener">MDN</a>），可防止<code>form</code>形式的<code>csrf</code>。</p>
+<p><code>XMLHttpRequest</code>遵循同源策略。虽然可以发送<code>JSON</code>，但<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82" target="_blank" rel="noopener">规范</a>中规定，发送<code>JSON</code>会进行<code>cors</code>检查，由浏览器完成。如果服务器未设置跨域相关字段或站点不被允许，则浏览器不会发送请求到服务器。故可以通过服务器设置跨域相关字段防止此类<code>csrf</code>。</p>
+<p><code>fetch</code>的三种<code>mode</code>见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode#Value" target="_blank" rel="noopener">此处</a>。<code>same-origin</code>不允许跨域；<code>cors</code>遵循同源策略；<code>no-cors</code>是指只允许<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode#Value" target="_blank" rel="noopener">简单请求</a>（基本与<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82" target="_blank" rel="noopener">同源策略中的简单请求</a>相同），不进行预请求。若违反（比如发送<code>json</code>）则服务器能收到请求和正确的数据，但是数据格式丢失，并且前端js报错。</p>
+<p>注：浏览器进行<code>cors</code>检查的预请求可看<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82" target="_blank" rel="noopener">MDN</a></p>
+<p>再注：若要支持跨域，则真实请求（如POST）的响应头需要写入<code>Access-Control-Allow-Origin</code>字段，否则浏览器不会将响应信息传给js。（服务器可以接收信息）</p>
+<h5 id="CSRF-Tokens"><a href="#CSRF-Tokens" class="headerlink" title="CSRF Tokens"></a>CSRF Tokens</h5><p>此方法出现的时间约为04年甚至更早，前提条件是<code>html</code>通过<strong>后端渲染</strong>，所以在当下流行<strong>前端渲染</strong>时难以实现。（可以参考<a href="https://stackoverflow.com/a/33060074" target="_blank" rel="noopener">这个node例子</a>理解）</p>
+<p>具体实现是在后端进行，后端生成一个与user无关的token，并将token渲染进form表单中。在form提交时也会传输token，后端只需检查token与对应的user是否匹配即可。并且这种token最好是一次性的，所以只需保证足够的随机性就能防止csrf（通常用加盐hash。当前有许多优秀插件解决此问题，此处只是了解，并不推荐自行实现）。（<a href="https://stackoverflow.com/a/5207418" target="_blank" rel="noopener">这个回答</a>下的评论说需要将token与request绑定才足够安全，由于没有其他资料，暂不考虑）其他内容如校验时机，token生成时机等细节不详细说明，可看<a href="https://cnodejs.org/topic/5533dd6e9138f09b629674fd" target="_blank" rel="noopener">cnode的例子</a>。</p>
+<p>注：token必须由后端渲染进dom。储存在cookie中，或者通过api获取token都是不安全的。虽然储存在localStorage是安全的，但这意味着需要通过api获取，依然不安全。</p>
+<h2 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h2><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>在用户输入的数据中注入特定的代码，利用浏览器解析和解码顺序，使得该代码得以用户使用过程中执行。</p>
+<h4 id="防范-1"><a href="#防范-1" class="headerlink" title="防范"></a>防范</h4><p>在所有需要使用用户输入的地方，获取数据时要进行过滤，使用现有的库即可。例如<code>node</code>的<code>xss</code>。<code>xss</code>的做法过多，不应由自己处理。</p>
 
       
 
@@ -234,11 +195,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前后端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
         		</li>
       		
 		</ul>
@@ -294,7 +255,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://z-950.github.io/2017/12/17/cookie和session/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://z-950.github.io/2019/05/19/csrf和xss/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +269,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/25/create-react-app和socket-io/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          create-react-app和socket.io
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/13/flex/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">flex</div>
+    <a href="/2018/09/30/颜色拾取器的实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">颜色拾取器的实现</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -346,7 +298,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。"><span class="toc-number">1.</span> <span class="toc-text">怠惰了一周真是有点方，看文档都晕乎乎的。整理一下和cookie、session相关的知识。并使用这些内容实现保持登录状态。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-number"></span> <span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie的一点知识"><span class="toc-number"></span> <span class="toc-text">cookie的一点知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置和清除cookie"><span class="toc-number"></span> <span class="toc-text">设置和清除cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析cookie"><span class="toc-number"></span> <span class="toc-text">解析cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于signed-cookie"><span class="toc-number"></span> <span class="toc-text">关于signed cookie</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session"><span class="toc-number"></span> <span class="toc-text">session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用express-session中间件"><span class="toc-number"></span> <span class="toc-text">使用express-session中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session的设置和删除。"><span class="toc-number"></span> <span class="toc-text">session的设置和删除。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session的储存"><span class="toc-number"></span> <span class="toc-text">session的储存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用connect-mongo将session存入mongodb"><span class="toc-number"></span> <span class="toc-text">使用connect-mongo将session存入mongodb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session验证登陆状态"><span class="toc-number"></span> <span class="toc-text">session验证登陆状态</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#由cookies安全了解的"><span class="toc-number">1.</span> <span class="toc-text">由cookies安全了解的</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf"><span class="toc-number"></span> <span class="toc-text">csrf</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原理"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#防范"><span class="toc-number">2.</span> <span class="toc-text">防范</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数据传输格式使用JSON"><span class="toc-number">2.1.</span> <span class="toc-text">数据传输格式使用JSON</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CSRF-Tokens"><span class="toc-number">2.2.</span> <span class="toc-text">CSRF Tokens</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss"><span class="toc-number"></span> <span class="toc-text">xss</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原理-1"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#防范-1"><span class="toc-number">2.</span> <span class="toc-text">防范</span></a></li></ol>
                     </div>
                 </span>
             </div>
